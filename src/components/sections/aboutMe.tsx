@@ -4,7 +4,7 @@ const workHistory = [
     {
         companyName: 'Soomo Learning',
         companyDescription: 'Asheville, North Carolina, United States',
-        totalDuration: 'February 2022 - March 2025 (3 years 2 months)',
+        totalDuration: 'February 2022 - March 2025',
         positions: [
             {
                 jobName: 'Software Engineer',
@@ -21,7 +21,7 @@ const workHistory = [
     {
         companyName: 'Paperless Solutions Group, Inc.',
         companyDescription: 'Gainesville, Florida, United States',
-        totalDuration: 'August 2017 - February 2022 (4 years 7 months)',
+        totalDuration: 'August 2017 - February 2022',
         positions: [
             {
                 jobName: 'Software Engineer',
@@ -38,7 +38,7 @@ const workHistory = [
     {
         companyName: 'SCI Fusion360',
         companyDescription: 'Charlotte, North Carolina, United States',
-        totalDuration: 'May 2016 - August 2017 (1 year 4 months)',
+        totalDuration: 'May 2016 - August 2017',
         positions: [
             {
                 jobName: 'Staff Software Developer',
