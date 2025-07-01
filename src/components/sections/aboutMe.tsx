@@ -73,13 +73,13 @@ export default function AboutMe() {
                         About Me
                     </h1>
                     <p className="text-lg md:text-xl py-6 text-left">
-                        With over 8 years of experience in the tech industry, I
+                        With over 9 years of experience in the tech industry, I
                         have worked with a variety of technologies and
                         frameworks to deliver high-quality software solutions.
                         With experience in Ruby on Rails, React, Java,
                         TypeScript, and Node.js, I have a diverse skill set that
                         enables me to adapt to new challenges and deliver
-                        results across different technology stacks.
+                        results across a variety of technology stacks.
                     </p>
                     <div className="max-w-4xl mx-auto">
                         {workHistory.map((company, index) => (
