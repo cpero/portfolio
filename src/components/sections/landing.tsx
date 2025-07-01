@@ -5,7 +5,7 @@ import ProfilePicture from '@/assets/images/profile.png'
 export default function Landing() {
     return (
         <section id="landing" className="">
-            <div className="hero bg-base-200 min-h-screen">
+            <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <Image
                         src={ProfilePicture}
