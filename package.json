@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "test": "vitest --run --passWithNoTests",
+    "test": "vitest --run",
     "type-check": "tsc --noEmit",
+    "prebuild": "vitest --run -t=content | cat",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "export": "next build"

@@ -1,0 +1,24 @@
+{
+  "categories": {
+    "languages": [
+      { "name": "Java" },
+      { "name": "JavaScript" },
+      { "name": "HTML" },
+      { "name": "CSS" },
+      { "name": "Ruby" }
+    ],
+    "frameworks": [{ "name": "React" }, { "name": "Ruby on Rails" }, { "name": "Spring" }],
+    "tooling": [
+      { "name": "Git" },
+      { "name": "Maven" },
+      { "name": "Apache Tomcat" },
+      { "name": "Vite" },
+      { "name": "AJAX" },
+      { "name": "Windows" },
+      { "name": "FullStory" }
+    ],
+    "cloudDevOps": [{ "name": "Heroku" }],
+    "testing": [{ "name": "Cucumber" }, { "name": "RSpec" }],
+    "uiLibraries": [{ "name": "Tailwind CSS" }]
+  }
+}

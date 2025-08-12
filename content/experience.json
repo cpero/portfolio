@@ -1,0 +1,76 @@
+{
+  "positions": [
+    {
+      "id": "soomo-learning",
+      "title": "Software Engineer",
+      "company": "Soomo Learning",
+      "companyDescription": "E-Learning platform for college students",
+      "industries": ["Education"],
+      "period": { "start": "2022-02", "end": "present" },
+      "employmentType": "full-time",
+      "stack": [
+        "React",
+        "CSS",
+        "Ruby on Rails",
+        "FullStory",
+        "Git",
+        "Heroku",
+        "Cucumber",
+        "RSpec",
+        "HTML",
+        "JavaScript",
+        "REST API",
+        "Tailwind CSS"
+      ],
+      "highlights": [
+        "Developed and managed React microsites that interact with a Rails monolith.",
+        "Built admin tools for efficient customer data management.",
+        "Improved student engagement and accessibility while preserving annotations and analytics.",
+        "Evaluated and integrated SOC 2 security standards and a11y requirements."
+      ]
+    },
+    {
+      "id": "mib",
+      "title": "Software Engineer",
+      "company": "MIB",
+      "companyDescription": "Custom Life Insurance sales solutions",
+      "industries": ["Healthcare", "Marketing", "Sales"],
+      "period": { "start": "2017-08", "end": "2022-02" },
+      "employmentType": "full-time",
+      "stack": [
+        "React",
+        "CSS",
+        "HTML",
+        "JavaScript",
+        "Java",
+        "REST API",
+        "Tailwind CSS",
+        "Maven",
+        "Apache Tomcat",
+        "SQL",
+        "AJAX",
+        "Vite"
+      ],
+      "highlights": [
+        "Developed and maintained web apps using React, Tailwind CSS, and Java.",
+        "Maintained backend systems with AJAX, Apache Tomcat, Maven, and SQL.",
+        "Introduced an optimized production build process integrating React and Maven with Vite for hot reloading."
+      ]
+    },
+    {
+      "id": "sci-fusion360",
+      "title": "Software Developer",
+      "company": "SCI Fusion360",
+      "companyDescription": "Software contracting",
+      "industries": ["Fintech", "Enterprise", "Banking", "Internal tools"],
+      "period": { "start": "2016-05", "end": "2017-08" },
+      "employmentType": "full-time",
+      "stack": ["Java", "Spring", "Windows", "Maven"],
+      "highlights": [
+        "Created a new payment processing application for banks by enhancing an existing Java monolith.",
+        "Developed RESTful API endpoints for user creation and payment processing.",
+        "Managed successful deployments to customers."
+      ]
+    }
+  ]
+}

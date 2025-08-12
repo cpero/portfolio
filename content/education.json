@@ -1,0 +1,17 @@
+{
+  "schools": [
+    {
+      "institution": "Western Carolina University",
+      "degreeType": "Bachelor's Degree",
+      "fieldOfStudy": "Computer Science",
+      "gpa": 3.2,
+      "period": { "start": "2012-08", "end": "2016-05" },
+      "activities": [
+        "Vice President of the Association of Computing Machinery (2 years)",
+        "Founder of the Tabletop and TCG Club",
+        "Member of Phi Mu Alpha, a music fraternity focused on community outreach",
+        "Resident Assistant (2 years)"
+      ]
+    }
+  ]
+}
