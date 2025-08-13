@@ -12,8 +12,8 @@ class MockIntersectionObserver {
   takeRecords = vi.fn(() => [] as IntersectionObserverEntry[]);
 }
 
-// @ts-expect-error assign to global
-globalThis.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver;
+globalThis.IntersectionObserver =
+  MockIntersectionObserver as unknown as typeof IntersectionObserver;
 
 // Polyfill matchMedia for useReducedMotion and responsive code paths
 Object.defineProperty(window, "matchMedia", {
@@ -29,5 +29,3 @@ Object.defineProperty(window, "matchMedia", {
     dispatchEvent: vi.fn(),
   })),
 });
-
-

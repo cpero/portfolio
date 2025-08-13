@@ -16,5 +16,3 @@ describe("anchors and sections", () => {
     }
   });
 });
-
-

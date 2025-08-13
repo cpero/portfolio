@@ -8,5 +8,3 @@ describe("theme no-flash script", () => {
     expect(script).toContain("data-theme");
   });
 });
-
-

@@ -32,7 +32,7 @@ export default function Headshot({ src, alt, priority, sizes }: HeadshotProps) {
           alt={alt}
           priority={priority}
           fill
-          onLoadingComplete={() => setIsLoaded(true)}
+          onLoad={() => setIsLoaded(true)}
           className="bg-base-300 object-cover object-[50%_20%]"
           sizes={sizes}
         />
