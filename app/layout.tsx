@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "next/third-parties/google";
 import Navbar from "@/components/Navbar";
 import { generateNoFlashThemeScript } from "@/lib/theme";
 import "./globals.css";
@@ -27,6 +28,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isProd = process.env.NODE_ENV === "production";
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -43,6 +46,7 @@ export default function RootLayout({
         </Link>
         <Navbar />
         {children}
+        {isProd && gaId ? <GoogleAnalytics gaId={gaId} /> : null}
       </body>
     </html>
   );
