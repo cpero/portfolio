@@ -46,9 +46,7 @@ function getSkillIconSlug(name: string): string | undefined {
   return map[normalized];
 }
 
-function shouldSpanTwoColumns(name: string): boolean {
-  return name.length > 12;
-}
+// Note: previous grid-based spanning removed; keep function deleted
 
 export default function SkillsMatrix() {
   const categories = [
@@ -75,18 +73,13 @@ export default function SkillsMatrix() {
               <div key={category.key} className="card bg-base-200 shadow-sm">
                 <div className="card-body">
                   <h3 className="card-title text-base">{category.label}</h3>
-                  <ul className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  <ul className="mt-2 flex flex-wrap gap-3 sm:gap-4">
                     {category.items?.map((item, index) => (
-                      <li
-                        key={`${category.key}-${item.name}-${index}`}
-                        className={["list-none", shouldSpanTwoColumns(item.name) ? "col-span-2" : ""].join(
-                          " "
-                        )}
-                      >
+                      <li key={`${category.key}-${item.name}-${index}`} className="list-none">
                         <span
                           className={`badge ${getBadgeClass(
                             item.proficiency,
-                          )} inline-flex h-8 w-full items-center justify-start gap-2`}
+                          )} inline-flex items-center justify-start gap-2`}
                         >
                           {(() => {
                             const slug = getSkillIconSlug(item.name);
@@ -97,10 +90,11 @@ export default function SkillsMatrix() {
                                 width={18}
                                 height={18}
                                 sizes="18px"
+                                unoptimized
                               />
                             ) : null;
                           })()}
-                          <span className="whitespace-normal">{item.name}</span>
+                          <span className="whitespace-nowrap">{item.name}</span>
                         </span>
                       </li>
                     ))}
