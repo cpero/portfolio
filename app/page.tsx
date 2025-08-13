@@ -1,9 +1,10 @@
 import Image from "next/image";
 import headshot from "@/public/headshot.png";
-import { bio } from "@/lib/content";
+import { bio, projects } from "@/lib/content";
 import SkillsMatrix from "@/components/SkillsMatrix";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import ResumeDownload from "@/components/ResumeDownload";
+import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
 
 export default function Home() {
@@ -40,7 +41,7 @@ export default function Home() {
         </div>
       </section>
       <section id="about" className="w-full">
-        <div className="mx-auto max-w-4xl p-8">
+        <div className="mx-auto max-w-6xl p-8">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">About</h2>
           {bio.summary && (
             <div className="text-base-content/80 mt-4 space-y-4 text-lg leading-relaxed">
@@ -68,6 +69,19 @@ export default function Home() {
       </section>
       <SkillsMatrix />
       <ExperienceTimeline />
+      <section id="projects" className="w-full">
+        <div className="mx-auto max-w-6xl p-8">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Projects</h2>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.projects
+              .slice()
+              .sort((a, b) => (a.order ?? 9999) - (b.order ?? 9999))
+              .map((proj) => (
+                <ProjectCard key={proj.id ?? `${proj.title}-${proj.order ?? 0}`} project={proj} />
+              ))}
+          </div>
+        </div>
+      </section>
       <section id="resume" className="w-full">
         <div className="mx-auto max-w-4xl p-8">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Resume</h2>
