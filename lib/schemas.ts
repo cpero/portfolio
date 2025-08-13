@@ -11,7 +11,7 @@ export const BioSchema = z.object({
   name: z.string(),
   email: z.email().optional(),
   location: z.string().optional(),
-  summary: z.array(z.string()).max(5).optional(),
+  summary: z.string().optional(),
   socialLinks: z.array(SocialLinkSchema).optional(),
 });
 
@@ -38,23 +38,6 @@ export const ExperiencePositionSchema = z.object({
 
 export const ExperienceSchema = z.object({
   positions: z.array(ExperiencePositionSchema),
-});
-
-// Education
-export const EducationSchoolSchema = z.object({
-  institution: z.string(),
-  degreeType: z.string(),
-  fieldOfStudy: z.string(),
-  gpa: z.number().min(0).max(4).optional(),
-  period: z.object({
-    start: z.string().regex(/^\d{4}-\d{2}$/),
-    end: z.string().regex(/^\d{4}-\d{2}$/),
-  }),
-  activities: z.array(z.string()).optional(),
-});
-
-export const EducationSchema = z.object({
-  schools: z.array(EducationSchoolSchema),
 });
 
 // Skills
@@ -94,7 +77,6 @@ export const ProjectSchema = z.object({
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
     .optional(),
   title: z.string(),
-  summary: z.string(),
   details: z.string().optional(),
   experienceRef: z.string().optional(),
   tags: z.array(z.string()).optional(),
@@ -113,7 +95,6 @@ export const ProjectSchema = z.object({
         .optional(),
     })
     .optional(),
-  order: z.number().int().optional(),
 });
 
 export const ProjectsSchema = z.object({
@@ -132,23 +113,15 @@ export const ContactSchema = z.object({
   form: ContactFormSchema.optional(),
 });
 
-// Interests
-export const InterestsSchema = z.object({
-  interests: z.array(z.string()),
-});
-
 export type Bio = z.infer<typeof BioSchema>;
 export type Experience = z.infer<typeof ExperienceSchema>;
-export type Education = z.infer<typeof EducationSchema>;
 export type Skills = z.infer<typeof SkillsSchema>;
 export type Projects = z.infer<typeof ProjectsSchema>;
 export type Contact = z.infer<typeof ContactSchema>;
-export type Interests = z.infer<typeof InterestsSchema>;
 
 // Inferred types for nested and item-level schemas for UI usage
 export type SocialLink = z.infer<typeof SocialLinkSchema>;
 export type ExperiencePosition = z.infer<typeof ExperiencePositionSchema>;
-export type EducationSchool = z.infer<typeof EducationSchoolSchema>;
 export type SkillItem = z.infer<typeof SkillItemSchema>;
 export type ProjectLink = z.infer<typeof ProjectLinkSchema>;
 export type ProjectImage = z.infer<typeof ProjectImageSchema>;

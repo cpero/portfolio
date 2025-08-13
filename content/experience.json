@@ -9,52 +9,47 @@
       "period": { "start": "2022-02", "end": "2025-03" },
       "employmentType": "full-time",
       "stack": [
-        "React",
-        "CSS",
         "Ruby on Rails",
+        "React",
+        "TypeScript",
+        "SQL",
         "FullStory",
-        "Git",
         "Heroku",
         "Cucumber",
         "RSpec",
-        "HTML",
-        "JavaScript",
-        "REST API",
+        "Tailwind CSS",
+        "Playwright",
         "Tailwind CSS"
       ],
       "highlights": [
-        "Developed and managed React microsites that interact with a Rails monolith.",
-        "Built admin tools for efficient customer data management.",
-        "Improved student engagement and accessibility while preserving annotations and analytics.",
-        "Evaluated and integrated SOC 2 security standards and a11y requirements."
+        "Developed and managed React microsites that interact with a Rails monolith. Things like analytics, reporting, and due date management were all built as separate React microsites.",
+        "Built admin tools for efficient customer data management. Since all of our content was produced in-house, we had several admin tools to manage the content.",
+        "Improved student engagement and accessibility while preserving annotations and analytics. Education was our passion and we wanted to make sure we were doing everything we could to help students succeed."
       ]
     },
     {
       "id": "mib",
       "title": "Software Engineer",
       "company": "MIB",
-      "companyDescription": "Custom Life Insurance sales solutions",
+      "companyDescription": "Custom life insurance sales solutions",
       "industries": ["Healthcare", "Marketing", "Sales"],
       "period": { "start": "2017-08", "end": "2022-02" },
       "employmentType": "full-time",
       "stack": [
+        "Java",
+        "Maven",
+        "Apache Tomcat",
         "React",
         "CSS",
         "HTML",
         "JavaScript",
-        "Java",
-        "REST API",
-        "Tailwind CSS",
-        "Maven",
-        "Apache Tomcat",
         "SQL",
-        "AJAX",
-        "Vite"
+        "Tailwind CSS"
       ],
       "highlights": [
-        "Developed and maintained web apps using React, Tailwind CSS, and Java.",
-        "Maintained backend systems with AJAX, Apache Tomcat, Maven, and SQL.",
-        "Introduced an optimized production build process integrating React and Maven with Vite for hot reloading."
+        "Worked with clients to design and develop custom web applications. We would work with them to understand their needs and then develop a solution to meet those needs.",
+        "Build custom web applications using React, Tailwind CSS, and Java. The backend was ran on an Apache Tomcat server using Maven to build the application and SQL to store the data.",
+        "Introduced an optimized production build process integrating React and Maven with Vite for hot reloading. Vite was more performant and hot reloading was a must-have for a developer experience."
       ]
     },
     {
@@ -65,11 +60,11 @@
       "industries": ["Fintech", "Enterprise", "Banking", "Internal tools"],
       "period": { "start": "2016-05", "end": "2017-08" },
       "employmentType": "full-time",
-      "stack": ["Java", "Spring", "Windows", "Maven"],
+      "stack": ["Java", "Windows", "Maven", "SQL"],
       "highlights": [
-        "Created a new payment processing application for banks by enhancing an existing Java monolith.",
-        "Developed RESTful API endpoints for user creation and payment processing.",
-        "Managed successful deployments to customers."
+        "Created a new payment processing application for banks by enhancing an existing Java monolith. This was a large application with many sections and it was a challenge to understand the codebase and make changes.",
+        "Developed RESTful API endpoints for user creation and payment processing. This was a new application and I was able to design the API from the ground up.",
+        "Was the only developer who was able to see the application from 0-1. Not only was I able to help build the application, but I was also able to help the client understand the application and how it worked when it was time for deployment."
       ]
     }
   ]

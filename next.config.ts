@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: { unoptimized: true },
-  output: "export",
+  // Use default server output to enable API routes/SSR on Vercel
 };
 
 export default nextConfig;

@@ -1,8 +1,8 @@
 ## Relevant Files
 
-- `package.json` - Project scripts and dependencies (Next.js, Tailwind, DaisyUI, Framer Motion, Zod, Vitest, Storybook, GA4 helpers).
+- `package.json` - Project scripts and dependencies (Next.js, Tailwind, DaisyUI, Framer Motion, Zod, Vitest).
 - `.nvmrc` - Node 20 runtime version.
-- `next.config.ts` - Static export config (`output: 'export'`, `images.unoptimized: true`).
+- `next.config.ts` - Next.js config (server output on Vercel; `images.unoptimized: true`).
 - `tsconfig.json` - TypeScript configuration.
 - `postcss.config.mjs` - PostCSS pipeline with Tailwind.
 - `tailwind.config.ts` - Tailwind + DaisyUI themes (`cupcake`, `cyberpunk`, `retro`, `dracula`, `night`).
@@ -21,12 +21,12 @@
 - `components/CaseStudyDetail.tsx` - Inline expansion content for a project.
 - `components/SkillsMatrix.tsx` - Skills grid driven by JSON categories.
 - `components/ContactForm.tsx` - Contact form with validation + states.
-- `components/ConsentBanner.tsx` - Analytics consent UI; gates GA4 load.
-- `components/Analytics.tsx` - GA4 loader gated by consent.
+- (removed) `components/ConsentBanner.tsx` - Analytics consent UI for GA.
+- (removed) `components/Analytics.tsx` - GA4 loader.
 - `lib/schemas.ts` - Zod schemas for bio, experience, education, skills, projects, interests.
 - `lib/content.ts` - Content loaders/validators; build-time validation.
 - `lib/theme.ts` - Theme helpers: storage key, initial no-flash apply, SSR-safe reads.
-- `lib/analytics.ts` - Consent key, GA4 event helpers (visits, resume download, contact submissions, theme changes, CTA clicks).
+- `lib/analytics.ts` - Client helpers to POST analytics events to `/api/analytics`.
 - `lib/scroll.ts` - Smooth scroll and active anchor logic.
 - `content/bio.json` - Bio content (name, title, summary, socialLinks).
 - `content/experience.json` - Experience positions and highlights.
@@ -45,17 +45,16 @@
 - `tests/inline-expansion-a11y.test.tsx` - A11y behavior for project expansion.
 - `tests/images-required-attrs.test.tsx` - Ensures images have required attributes and hero `priority`.
 - `tests/resume-event.test.tsx` - Verifies resume download analytics event.
-- `.storybook/main.ts` - Storybook config (`@storybook/nextjs-vite` preferred) with addons.
-- `.storybook/preview.ts` - Global parameters/decorators (a11y, viewport, theme wrapper).
-- `.github/workflows/ci.yml` - Type-check, lint, tests, Storybook build, static export, Lighthouse CI (mobile).
-- `.github/workflows/deploy.yml` - Deploy static export to GitHub Pages on `main`.
+- (removed) `.storybook/main.ts` - Storybook config.
+- (removed) `.storybook/preview.ts` - Storybook globals.
+- `.github/workflows/ci.yml` - Type-check, lint, tests. Deployments handled by Vercel.
 
 ### Notes
 
 - Tests are consolidated under a single `tests/` directory per PRD. Run with `pnpm test`.
 - Tests mirror the source directory structure (e.g., `tests/lib/content.test.ts` mirrors `lib/content.ts`).
-- Static export writes to `out/`. Deployment targets GitHub Pages with custom domain `codypero.com`.
-- GA4 loads only after explicit consent. Track: visits, resume download, contact submissions, theme changes, CTA clicks.
+- Deployment is via Vercel.
+- Analytics uses API endpoint `/api/analytics`; no GA script.
 - DaisyUI themes: `cupcake`, `cyberpunk`, `retro`, `dracula`, `night`. Default to system; persist in `localStorage`. Apply before first paint to prevent flash.
 - Performance budgets: total JS ≤ 200KB gz, fonts ≤ 100KB woff2, LCP image ≤ 120KB, CLS < 0.05.
 
@@ -67,16 +66,13 @@
   - [x] 1.3 Add Geist via `next/font/local` in `app/fonts.ts`; place font files under `public/fonts/` with CLS-safe usage.
   - [x] 1.4 Configure ESLint: `eslint-config-next`, `eslint-plugin-tailwindcss`, `eslint-plugin-jsx-a11y`; use `eslint.config.mjs` (flat config) and add `.eslintignore`.
   - [x] 1.5 Configure Prettier with `prettier-plugin-tailwindcss`; add `.prettierrc.json` and `.prettierignore`.
-  - [x] 1.6 Add Framer Motion, Zod, Testing Library, Vitest, Storybook (`@storybook/nextjs-vite`), GA4 helpers to `package.json`.
+  - [x] 1.6 Add Framer Motion, Zod, Testing Library, Vitest to `package.json`.
   - [x] 1.7 Scaffold directories: `app/`, `components/`, `lib/`, `content/`, `public/`, `tests/`.
-  - [x] 1.8 Add npm scripts: `dev`, `build`, `start`, `type-check`, `lint`, `format`, `test`, `storybook`, `build-storybook`, `export`.
+  - [x] 1.8 Add npm scripts: `dev`, `build`, `start`, `type-check`, `lint`, `format`, `test`.
 
-- [x] 2.0 Static export and deployment baseline
-  - [x] 2.1 Configure `next.config.js` with `output: 'export'` and `images: { unoptimized: true }`.
-  - [x] 2.2 Add `app/not-found.tsx` to produce static `404.html` on export.
-  - [x] 2.3 Create GitHub Pages deployment workflow (`.github/workflows/deploy.yml`) that builds and deploys `out/` on `main`.
-  - [x] 2.4 Add `CNAME` in `public/` for `codypero.com`; verify canonical URL policy uses the custom domain.
-  - [x] 2.5 Ensure relative asset paths are compatible with Pages when using a custom domain (no `basePath` needed).
+- [ ] 2.0 Deployment baseline
+  - [x] 2.1 Configure `next.config.ts` with server output (API routes enabled) and `images: { unoptimized: true }` for Vercel.
+  - [ ] 2.2 Remove GitHub Pages deployment workflow and CNAME; set up Vercel project with `codypero.com`.
 
 - [x] 3.0 Content model and validation
 - [x] 3.1 Implement Zod schemas in `lib/schemas.ts` for `bio`, `experience`, `education`, `skills`, `projects`, `contact`, `interests` per PRD.
@@ -116,14 +112,13 @@
   - [x] 8.4 Lazy-load non-critical images/sections and defer non-critical scripts.
   - [x] 8.5 Verify budgets: total JS ≤ 200KB gz, fonts ≤ 100KB woff2, LCP ≤ 120KB, CLS < 0.05.
 
-- [ ] 9.0 SEO and analytics consent
+- [ ] 9.0 SEO and analytics
   - [ ] 9.1 Define `metadata` in `app/layout.tsx` with title, description, and canonical policy using `codypero.com`.
-  - [ ] 9.2 Implement `app/sitemap.ts` and `app/robots.ts` for static export.
-  - [ ] 9.3 Add `components/ConsentBanner.tsx` with a clear consent mechanism and a storage key; default state documented.
-  - [ ] 9.4 Load GA4 only after consent; track visits, resume download, contact submissions, theme changes, CTA clicks via `lib/analytics.ts`.
+  - [ ] 9.2 Implement `app/sitemap.ts` and `app/robots.ts`.
+  - [x] 9.3 Implement API-based analytics endpoint at `app/api/analytics/route.ts`; client sends events via `lib/analytics.ts`.
 
-- [ ] 10.0 Testing, Storybook, and CI/CD
+- [ ] 10.0 Testing and CI/CD
   - [ ] 10.1 Configure Vitest (`vitest.config.ts`) with `jsdom` and Testing Library; create baseline tests under `tests/` as per PRD.
-  - [ ] 10.2 Set up Storybook (`@storybook/nextjs-vite` preferred) with a11y, controls, viewport; stories for `Navbar`, `ThemeToggle`, `ProjectCard`, `CaseStudyDetail`, `SkillsMatrix`, `ContactForm`.
-  - [ ] 10.3 Create GitHub Actions workflows: `ci.yml` (type-check, lint, test, Storybook build, static export, Lighthouse CI mobile) and `deploy.yml` (deploy to GitHub Pages on `main`).
-  - [ ] 10.4 Add `README.md` with setup, scripts, content editing, testing, Storybook, and deployment instructions.
+  - [x] 10.2 Remove Storybook completely (dependencies, scripts, configs).
+  - [ ] 10.3 Add CI workflow for type-check, lint, tests. Vercel handles deployments.
+  - [x] 10.4 Update `README.md` with setup, analytics, and Vercel deployment instructions.

@@ -29,9 +29,11 @@ export default function SkillsMatrix() {
   const hasProficiency = categories.some((c) => c.items?.some((i) => i.proficiency) ?? false);
 
   return (
-    <section id="skills" className="w-full">
+    <section id="skills" className="w-full scroll-mt-24 lg:scroll-mt-28">
       <div className="mx-auto max-w-6xl p-8">
-        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Skills</h2>
+        <h2 className="decoration-accent text-2xl font-bold tracking-tight underline underline-offset-4 sm:text-3xl">
+          Skills
+        </h2>
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories
             .filter((c) => (c.items?.length ?? 0) > 0)
@@ -40,8 +42,8 @@ export default function SkillsMatrix() {
                 <div className="card-body">
                   <h3 className="card-title text-base">{category.label}</h3>
                   <ul className="mt-2 flex flex-wrap gap-2">
-                    {category.items?.map((item) => (
-                      <li key={item.name}>
+                    {category.items?.map((item, index) => (
+                      <li key={`${category.key}-${item.name}-${index}`}>
                         <span className={`badge ${getBadgeClass(item.proficiency)}`}>
                           {item.name}
                         </span>

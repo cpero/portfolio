@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -31,14 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          id="no-flash-theme"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: generateNoFlashThemeScript() }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: generateNoFlashThemeScript() }} />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-base-100 text-base-content antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-base-100 text-base-content overflow-x-hidden antialiased`}
       >
         <Link
           href="#content"

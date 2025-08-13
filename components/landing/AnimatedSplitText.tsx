@@ -50,7 +50,7 @@ export default function AnimatedSplitText({
   const words = text.trim().split(/\s+/);
 
   return (
-    <span className={`inline-block ${className ?? ""}`} role="text" aria-label={text}>
+    <span className={`inline-block ${className ?? ""}`} aria-label={text}>
       {/* Animated words (hidden from screen readers for clarity) */}
       <motion.span
         className="inline"

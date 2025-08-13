@@ -39,9 +39,7 @@ export default function Navbar() {
             <li>
               <Link href="#projects">Projects</Link>
             </li>
-            <li>
-              <Link href="#resume">Resume</Link>
-            </li>
+
             <li>
               <Link href="#contact">Contact</Link>
             </li>
@@ -65,14 +63,11 @@ export default function Navbar() {
           <li>
             <Link href="#projects">Projects</Link>
           </li>
-          <li>
-            <Link href="#resume">Resume</Link>
-          </li>
         </ul>
       </div>
       <div className="navbar-end gap-4">
         <ThemeToggle />
-        <Link href="#contact" className="btn btn-primary">
+        <Link href="#contact" className="btn btn-secondary">
           Contact Me
         </Link>
       </div>

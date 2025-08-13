@@ -1,26 +1,31 @@
 {
   "projects": [
     {
-      "id": "ibm-zelle-integration",
-      "title": "IBM Zelle Integration",
-      "summary": "Designed and implemented a large-scale P2P payment integration enabling banks to offer Zelle.",
-      "details": "One of three engineers to architect and deliver a P2P payments integration that interfaced with an existing payment processing monolith. Deployed successfully to several banks.",
-      "experienceRef": "sci-fusion360",
-      "tags": ["fintech", "payments", "banking"],
-      "stack": ["Java", "Spring", "REST API"],
-      "dates": { "start": "2016-05", "end": "2017-08" },
-      "order": 1
+      "id": "custom-portfolio",
+      "title": "Custom Portfolio",
+      "details": "I built this website to showcase my skills and experience. I wanted to create a website that was easy to navigate and had a modern look and feel and sleek animations. I created this website using Next.js, Tailwind CSS, and TypeScript. Its optimized for accessibility and performance, so it should work on any device.",
+      "experienceRef": "self",
+      "tags": ["portfolio", "website", "custom"],
+      "stack": ["Next.js", "Tailwind CSS", "TypeScript"],
+      "dates": { "start": "2025-08" }
     },
     {
       "id": "rails-platform-improvements",
       "title": "Rails Platform Improvements",
-      "summary": "Maintained and enhanced a large Ruby on Rails application supporting student engagement and operations.",
-      "details": "Implemented changes to model relationships, delivered admin tooling for the Customer Success team, and helped with SOC 2 and accessibility requirements.",
+      "details": "Implemented changes to model relationships, delivered admin tooling for the Customer Success team, and helped with SOC 2 and accessibility requirements. By interacting with other departments, I was able to understand their workflows and how to improve the application to better support their needs.",
       "experienceRef": "soomo-learning",
       "tags": ["education", "platform", "a11y", "security"],
       "stack": ["Ruby on Rails", "React"],
-      "dates": { "start": "2022-02" },
-      "order": 2
+      "dates": { "start": "2024-07", "end": "2025-03" }
+    },
+    {
+      "id": "ibm-zelle-integration",
+      "title": "IBM Zelle Integration",
+      "details": "One of three engineers to architect and deliver a P2P payments integration that interfaced with an existing payment processing monolith. Deployed successfully to several banks. Still in use today.",
+      "experienceRef": "sci-fusion360",
+      "tags": ["fintech", "payments", "banking"],
+      "stack": ["Java", "REST API", "SQL"],
+      "dates": { "start": "2016-05", "end": "2017-08" }
     }
   ]
 }

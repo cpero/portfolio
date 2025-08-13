@@ -71,7 +71,7 @@ export default function ProjectCard({ project, className }: Props) {
   return (
     <article className={`card bg-base-200 shadow-sm ${className ?? ""}`}>
       <div className="card-body">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <div className="flex flex-col flex-wrap items-baseline justify-between gap-2">
           <h3 className="card-title text-base sm:text-lg">{project.title}</h3>
           {period && <time className="text-base-content/70 text-sm">{period}</time>}
         </div>
@@ -80,15 +80,14 @@ export default function ProjectCard({ project, className }: Props) {
           <div className="mt-2">{renderImage(project.images[0])}</div>
         )}
 
-        <p className="text-base-content/80 mt-3 text-sm sm:text-base">{project.summary}</p>
         {project.details && (
           <p className="text-base-content/70 mt-2 text-sm sm:text-base">{project.details}</p>
         )}
 
         {(project.tags?.length ?? 0) > 0 && (
           <div className="mt-3 flex flex-wrap gap-2">
-            {project.tags?.map((tag) => (
-              <span key={tag} className="badge badge-ghost">
+            {project.tags?.map((tag, index) => (
+              <span key={`${tag}-${index}`} className="badge badge-ghost">
                 {tag}
               </span>
             ))}
@@ -97,8 +96,8 @@ export default function ProjectCard({ project, className }: Props) {
 
         {(project.stack?.length ?? 0) > 0 && (
           <div className="mt-3 flex flex-wrap gap-2">
-            {project.stack?.map((tech) => (
-              <span key={tech} className="badge badge-outline">
+            {project.stack?.map((tech, index) => (
+              <span key={`${tech}-${index}`} className="badge badge-outline">
                 {tech}
               </span>
             ))}

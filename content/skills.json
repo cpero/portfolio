@@ -3,22 +3,22 @@
     "languages": [
       { "name": "Java" },
       { "name": "JavaScript" },
+      { "name": "TypeScript" },
+      { "name": "SQL" },
       { "name": "HTML" },
       { "name": "CSS" },
       { "name": "Ruby" }
     ],
-    "frameworks": [{ "name": "React" }, { "name": "Ruby on Rails" }, { "name": "Spring" }],
-    "tooling": [
-      { "name": "Git" },
-      { "name": "Maven" },
-      { "name": "Apache Tomcat" },
-      { "name": "Vite" },
-      { "name": "AJAX" },
-      { "name": "Windows" },
-      { "name": "FullStory" }
+    "frameworks": [{ "name": "React" }, { "name": "Ruby on Rails" }],
+    "tooling": [{ "name": "Git" }, { "name": "Vite" }, { "name": "AJAX" }, { "name": "FullStory" }],
+    "cloudDevOps": [{ "name": "Heroku" }, { "name": "AWS" }, { "name": "Docker" }],
+    "testing": [
+      { "name": "Cucumber" },
+      { "name": "RSpec" },
+      { "name": "Jest" },
+      { "name": "Vitest" },
+      { "name": "Playwright" }
     ],
-    "cloudDevOps": [{ "name": "Heroku" }],
-    "testing": [{ "name": "Cucumber" }, { "name": "RSpec" }],
-    "uiLibraries": [{ "name": "Tailwind CSS" }]
+    "uiLibraries": [{ "name": "Tailwind CSS" }, { "name": "Bootstrap" }, { "name": "Material UI" }]
   }
 }

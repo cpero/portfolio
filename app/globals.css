@@ -21,6 +21,8 @@ body {
 /* Smooth scroll with a11y fallback */
 html {
   scroll-behavior: smooth;
+  /* Offset in-page anchor jumps for sticky navbar */
+  scroll-padding-top: 6rem;
 }
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -43,15 +45,18 @@ section[id],
 header[id],
 footer[id],
 div[id] {
-  scroll-margin-top: 5rem; /* mobile */
+  scroll-margin-top: 7rem; /* mobile: account for sticky navbar */
 }
 @media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 8rem;
+  }
   main[id],
   section[id],
   header[id],
   footer[id],
   div[id] {
-    scroll-margin-top: 6rem; /* desktop */
+    scroll-margin-top: 8rem; /* desktop */
   }
 }
 

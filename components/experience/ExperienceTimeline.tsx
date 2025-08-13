@@ -30,9 +30,11 @@ export default function ExperienceTimeline() {
   const positions = experience.positions;
 
   return (
-    <section id="experience" className="w-full">
+    <section id="experience" className="mb-16 w-full scroll-mt-24 lg:scroll-mt-28">
       <div className="mx-auto max-w-6xl p-8">
-        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Experience</h2>
+        <h2 className="decoration-accent text-2xl font-bold tracking-tight underline underline-offset-4 sm:text-3xl">
+          Experience
+        </h2>
         <ol aria-label="Experience timeline" className="mt-6 space-y-6">
           {positions.map((pos) => (
             <li
@@ -65,8 +67,8 @@ export default function ExperienceTimeline() {
                   )}
                   {pos.stack && pos.stack.length > 0 && (
                     <div className="mt-3 flex flex-wrap gap-2">
-                      {pos.stack.map((tech) => (
-                        <span key={tech} className="badge badge-outline">
+                      {pos.stack.map((tech, index) => (
+                        <span key={`${tech}-${index}`} className="badge badge-outline">
                           {tech}
                         </span>
                       ))}

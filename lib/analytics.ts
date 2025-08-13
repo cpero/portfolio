@@ -1,19 +1,34 @@
-// Lightweight analytics helpers with safe guards so they can be used before GA is wired
+// Lightweight analytics helper that posts to our API route instead of GA
 
 export type ResumeEventSource = "hero" | "resume-section" | "other";
 
-export function trackResumeDownload(source: ResumeEventSource = "other"): void {
+function postAnalyticsEvent(payload: unknown): void {
   try {
-    // GA4 via gtag if available
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const gtag = (globalThis as any).gtag as
-      | ((command: string, event: string, params?: Record<string, unknown>) => void)
-      | undefined;
-    gtag?.("event", "resume_download", { source });
+    const url = "/api/analytics";
+
+    // Prefer sendBeacon for reliability during page unloads
+    if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
+      const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+      navigator.sendBeacon(url, blob);
+      return;
+    }
+
+    // Fallback to fetch
+    if (typeof fetch === "function") {
+      void fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      });
+    }
   } catch {
     // no-op
   }
-  // Helpful dev signal; safe in production too
+}
+
+export function trackResumeDownload(source: ResumeEventSource = "other"): void {
+  postAnalyticsEvent({ type: "resume_download", source, timestamp: Date.now() });
   if (process.env.NODE_ENV !== "production") {
     // eslint-disable-next-line no-console
     console.debug("analytics:event", "resume_download", { source });

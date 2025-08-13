@@ -1,8 +1,7 @@
-name: Deploy to GitHub Pages
+name: (disabled) Deploy to GitHub Pages
 
 on:
-  push:
-    branches: ["main"]
+  # Disabled: Vercel handles deployments
   workflow_dispatch:
 
 permissions:
@@ -16,6 +15,8 @@ concurrency:
 
 jobs:
   build:
+    # Disabled job
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,6 +44,7 @@ jobs:
           path: ./out
 
   deploy:
+    if: false
     needs: build
     runs-on: ubuntu-latest
     environment:
