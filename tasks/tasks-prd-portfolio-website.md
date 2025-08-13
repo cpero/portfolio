@@ -119,7 +119,7 @@
   - [x] 9.3 Implement API-based analytics endpoint at `app/api/analytics/route.ts`; client sends events via `lib/analytics.ts`.
 
 - [ ] 10.0 Testing and CI/CD
-  - [ ] 10.1 Configure Vitest (`vitest.config.ts`) with `jsdom` and Testing Library; create baseline tests under `tests/` as per PRD.
+  - [x] 10.1 Configure Vitest (`vitest.config.ts`) with `jsdom` and Testing Library; create baseline tests under `tests/` as per PRD.
   - [x] 10.2 Remove Storybook completely (dependencies, scripts, configs).
   - [x] 10.3 Add CI workflow for type-check, lint, tests. Vercel handles deployments.
   - [x] 10.4 Update `README.md` with setup, analytics, and Vercel deployment instructions.
