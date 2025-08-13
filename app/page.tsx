@@ -1,5 +1,5 @@
 import Image from "next/image";
-import headshot from "@/public/headshot.png";
+import headshot from "@/public/headshot.jpg";
 import { bio, projects } from "@/lib/content";
 import ResumeDownload from "@/components/ResumeDownload";
 import ProjectCard from "@/components/ProjectCard";

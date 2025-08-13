@@ -114,7 +114,7 @@
   - [x] 8.2 Honor `prefers-reduced-motion` globally for CSS and Framer Motion variants.
   - [x] 8.3 Use `next/image` with explicit `width`/`height` and appropriate `sizes`; mark LCP image with `priority`.
   - [x] 8.4 Lazy-load non-critical images/sections and defer non-critical scripts.
-  - [ ] 8.5 Verify budgets: total JS ≤ 200KB gz, fonts ≤ 100KB woff2, LCP ≤ 120KB, CLS < 0.05.
+  - [x] 8.5 Verify budgets: total JS ≤ 200KB gz, fonts ≤ 100KB woff2, LCP ≤ 120KB, CLS < 0.05.
 
 - [ ] 9.0 SEO and analytics consent
   - [ ] 9.1 Define `metadata` in `app/layout.tsx` with title, description, and canonical policy using `codypero.com`.
