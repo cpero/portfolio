@@ -46,6 +46,10 @@ function getSkillIconSlug(name: string): string | undefined {
   return map[normalized];
 }
 
+function shouldSpanTwoColumns(name: string): boolean {
+  return name.length > 12;
+}
+
 export default function SkillsMatrix() {
   const categories = [
     { key: "languages", label: "Languages", items: skills.categories.languages },
@@ -73,7 +77,12 @@ export default function SkillsMatrix() {
                   <h3 className="card-title text-base">{category.label}</h3>
                   <ul className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
                     {category.items?.map((item, index) => (
-                      <li key={`${category.key}-${item.name}-${index}`} className="list-none">
+                      <li
+                        key={`${category.key}-${item.name}-${index}`}
+                        className={["list-none", shouldSpanTwoColumns(item.name) ? "col-span-2" : ""].join(
+                          " "
+                        )}
+                      >
                         <span
                           className={`badge ${getBadgeClass(
                             item.proficiency,
@@ -91,7 +100,7 @@ export default function SkillsMatrix() {
                               />
                             ) : null;
                           })()}
-                          <span className="truncate">{item.name}</span>
+                          <span className="whitespace-normal">{item.name}</span>
                         </span>
                       </li>
                     ))}
