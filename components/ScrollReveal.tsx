@@ -8,8 +8,7 @@ type ScrollRevealProps = PropsWithChildren<{
   offset?: number;
   delay?: number;
   amount?: number;
-  /** Section id to re-trigger animation when navigating via anchor links */
-  targetId?: string;
+  targetId?: string; // deprecated, no longer used
 }>;
 
 export default function ScrollReveal({
@@ -17,13 +16,14 @@ export default function ScrollReveal({
   className,
   offset = 150,
   delay = 0.5,
-  amount = 0.7,
+  amount = 0.2,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   targetId,
 }: ScrollRevealProps) {
   const shouldReduceMotion = useReducedMotion();
   const controls = useAnimation();
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount, margin: "0px 0px -12% 0px" });
+  const inView = useInView(ref, { once: true, amount });
 
   useEffect(() => {
     if (shouldReduceMotion) return;
@@ -32,21 +32,7 @@ export default function ScrollReveal({
     }
   }, [controls, inView, shouldReduceMotion]);
 
-  useEffect(() => {
-    if (shouldReduceMotion || !targetId) return;
-    const retrigger = () => {
-      const current = (location.hash || "").replace(/^#/, "");
-      if (current && current === targetId) {
-        controls.set("hidden");
-        requestAnimationFrame(() => {
-          controls.start("visible");
-        });
-      }
-    };
-    retrigger();
-    window.addEventListener("hashchange", retrigger);
-    return () => window.removeEventListener("hashchange", retrigger);
-  }, [controls, shouldReduceMotion, targetId]);
+  // Removed hash-based retrigger to avoid sections staying hidden
 
   if (shouldReduceMotion) {
     return (
