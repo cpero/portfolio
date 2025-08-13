@@ -6,7 +6,7 @@
       "company": "Soomo Learning",
       "companyDescription": "E-Learning platform for college students",
       "industries": ["Education"],
-      "period": { "start": "2022-02", "end": "present" },
+      "period": { "start": "2022-02", "end": "2025-03" },
       "employmentType": "full-time",
       "stack": [
         "React",
