@@ -117,11 +117,9 @@
   - [x] 9.1 Define `metadata` in `app/layout.tsx` with title, description, and canonical policy using `codypero.com`.
   - [x] 9.2 Implement `app/sitemap.ts` and `app/robots.ts`.
   - [x] 9.3 Implement API-based analytics endpoint at `app/api/analytics/route.ts`; client sends events via `lib/analytics.ts`.
-    
-    
 
 - [ ] 10.0 Testing and CI/CD
   - [ ] 10.1 Configure Vitest (`vitest.config.ts`) with `jsdom` and Testing Library; create baseline tests under `tests/` as per PRD.
   - [x] 10.2 Remove Storybook completely (dependencies, scripts, configs).
-  - [ ] 10.3 Add CI workflow for type-check, lint, tests. Vercel handles deployments.
+  - [x] 10.3 Add CI workflow for type-check, lint, tests. Vercel handles deployments.
   - [x] 10.4 Update `README.md` with setup, analytics, and Vercel deployment instructions.
