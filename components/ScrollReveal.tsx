@@ -8,7 +8,6 @@ type ScrollRevealProps = PropsWithChildren<{
   offset?: number;
   delay?: number;
   amount?: number;
-  targetId?: string; // deprecated, no longer used
 }>;
 
 export default function ScrollReveal({
@@ -17,8 +16,6 @@ export default function ScrollReveal({
   offset = 150,
   delay = 0.5,
   amount = 0.2,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  targetId,
 }: ScrollRevealProps) {
   const shouldReduceMotion = useReducedMotion();
   const controls = useAnimation();
@@ -31,8 +28,6 @@ export default function ScrollReveal({
       controls.start("visible");
     }
   }, [controls, inView, shouldReduceMotion]);
-
-  // Removed hash-based retrigger to avoid sections staying hidden
 
   if (shouldReduceMotion) {
     return (

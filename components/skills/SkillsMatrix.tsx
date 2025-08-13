@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { skills } from "@/lib/content";
 import type { SkillItem } from "@/lib/schemas";
 
@@ -14,6 +15,56 @@ function getBadgeClass(prof?: SkillItem["proficiency"]): string {
     default:
       return "";
   }
+}
+
+function getSkillIconSlug(name: string): string | undefined {
+  const normalized = name.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const map: Record<string, string> = {
+    java: "java",
+    javascript: "js",
+    typescript: "ts",
+    sql: "sqlite",
+    html: "html",
+    css: "css",
+    ruby: "ruby",
+    react: "react",
+    rails: "rails",
+    rubyonrails: "rails",
+    git: "git",
+    vite: "vite",
+    heroku: "heroku",
+    aws: "aws",
+    docker: "docker",
+    jest: "jest",
+    vitest: "vitest",
+    playwright: "playwright",
+    tailwind: "tailwind",
+    tailwindcss: "tailwind",
+    bootstrap: "bootstrap",
+    materialui: "materialui",
+  };
+  return map[normalized];
+}
+
+function SkillBadge({ name, proficiency }: { name: string; proficiency?: SkillItem["proficiency"] }) {
+  const slug = getSkillIconSlug(name);
+  const iconUrl = slug ? `https://skillicons.dev/icons?i=${slug}` : undefined;
+  return (
+    <span className={`badge ${getBadgeClass(proficiency)} gap-1 items-center`}> 
+      <span className="relative inline-flex h-[18px] w-[18px] items-center justify-center">
+        {iconUrl ? (
+          <Image src={iconUrl} alt={name} width={18} height={18} sizes="18px" />
+        ) : (
+          <span
+            aria-hidden
+            className="bg-base-300 inline-block h-[14px] w-[14px] rounded-sm"
+            title={name}
+          />
+        )}
+      </span>
+      <span className="leading-none">{name}</span>
+    </span>
+  );
 }
 
 export default function SkillsMatrix() {
@@ -44,9 +95,7 @@ export default function SkillsMatrix() {
                   <ul className="mt-2 flex flex-wrap gap-2">
                     {category.items?.map((item, index) => (
                       <li key={`${category.key}-${item.name}-${index}`}>
-                        <span className={`badge ${getBadgeClass(item.proficiency)}`}>
-                          {item.name}
-                        </span>
+                        <SkillBadge name={item.name} proficiency={item.proficiency} />
                       </li>
                     ))}
                   </ul>
