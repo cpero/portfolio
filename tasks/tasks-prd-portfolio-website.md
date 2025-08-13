@@ -72,7 +72,8 @@
 
 - [ ] 2.0 Deployment baseline
   - [x] 2.1 Configure `next.config.ts` with server output (API routes enabled) and `images: { unoptimized: true }` for Vercel.
-  - [ ] 2.2 Remove GitHub Pages deployment workflow and CNAME; set up Vercel project with `codypero.com`.
+  - [x] 2.2 Remove GitHub Pages deployment workflow and CNAME; set up Vercel project with `codypero.com`.
+    - Note: GitHub Pages workflow removed and CNAME deleted. To finish domain setup, connect repo on Vercel and add `codypero.com` in Domains.
 
 - [x] 3.0 Content model and validation
 - [x] 3.1 Implement Zod schemas in `lib/schemas.ts` for `bio`, `experience`, `education`, `skills`, `projects`, `contact`, `interests` per PRD.
@@ -113,9 +114,11 @@
   - [x] 8.5 Verify budgets: total JS ≤ 200KB gz, fonts ≤ 100KB woff2, LCP ≤ 120KB, CLS < 0.05.
 
 - [ ] 9.0 SEO and analytics
-  - [ ] 9.1 Define `metadata` in `app/layout.tsx` with title, description, and canonical policy using `codypero.com`.
-  - [ ] 9.2 Implement `app/sitemap.ts` and `app/robots.ts`.
+  - [x] 9.1 Define `metadata` in `app/layout.tsx` with title, description, and canonical policy using `codypero.com`.
+  - [x] 9.2 Implement `app/sitemap.ts` and `app/robots.ts`.
   - [x] 9.3 Implement API-based analytics endpoint at `app/api/analytics/route.ts`; client sends events via `lib/analytics.ts`.
+    
+    
 
 - [ ] 10.0 Testing and CI/CD
   - [ ] 10.1 Configure Vitest (`vitest.config.ts`) with `jsdom` and Testing Library; create baseline tests under `tests/` as per PRD.
