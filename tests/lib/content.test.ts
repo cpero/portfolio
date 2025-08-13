@@ -48,5 +48,3 @@ describe("content schemas", () => {
     expect(result.success).toBe(false);
   });
 });
-
-

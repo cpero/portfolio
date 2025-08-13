@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import { generateNoFlashThemeScript } from "@/lib/theme";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,8 +29,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="cupcake">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          id="no-flash-theme"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: generateNoFlashThemeScript() }}
+        />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bg-base-100 text-base-content antialiased`}
+      >
+        <Link
+          href="#content"
+          className="btn btn-sm btn-primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100]"
+        >
+          Skip to content
+        </Link>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
