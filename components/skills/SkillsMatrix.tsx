@@ -46,27 +46,6 @@ function getSkillIconSlug(name: string): string | undefined {
   return map[normalized];
 }
 
-function SkillBadge({ name, proficiency }: { name: string; proficiency?: SkillItem["proficiency"] }) {
-  const slug = getSkillIconSlug(name);
-  const iconUrl = slug ? `https://skillicons.dev/icons?i=${slug}` : undefined;
-  return (
-    <span className={`badge ${getBadgeClass(proficiency)} gap-1 items-center`}> 
-      <span className="relative inline-flex h-[18px] w-[18px] items-center justify-center">
-        {iconUrl ? (
-          <Image src={iconUrl} alt={name} width={18} height={18} sizes="18px" />
-        ) : (
-          <span
-            aria-hidden
-            className="bg-base-300 inline-block h-[14px] w-[14px] rounded-sm"
-            title={name}
-          />
-        )}
-      </span>
-      <span className="leading-none">{name}</span>
-    </span>
-  );
-}
-
 export default function SkillsMatrix() {
   const categories = [
     { key: "languages", label: "Languages", items: skills.categories.languages },
@@ -92,10 +71,28 @@ export default function SkillsMatrix() {
               <div key={category.key} className="card bg-base-200 shadow-sm">
                 <div className="card-body">
                   <h3 className="card-title text-base">{category.label}</h3>
-                  <ul className="mt-2 flex flex-wrap gap-2">
+                  <ul className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
                     {category.items?.map((item, index) => (
-                      <li key={`${category.key}-${item.name}-${index}`}>
-                        <SkillBadge name={item.name} proficiency={item.proficiency} />
+                      <li key={`${category.key}-${item.name}-${index}`} className="list-none">
+                        <span
+                          className={`badge ${getBadgeClass(
+                            item.proficiency,
+                          )} inline-flex h-8 w-full items-center justify-start gap-2`}
+                        >
+                          {(() => {
+                            const slug = getSkillIconSlug(item.name);
+                            return slug ? (
+                              <Image
+                                src={`https://skillicons.dev/icons?i=${slug}`}
+                                alt={item.name}
+                                width={18}
+                                height={18}
+                                sizes="18px"
+                              />
+                            ) : null;
+                          })()}
+                          <span className="truncate">{item.name}</span>
+                        </span>
                       </li>
                     ))}
                   </ul>
