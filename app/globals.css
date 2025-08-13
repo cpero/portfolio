@@ -26,6 +26,14 @@ html {
   html {
     scroll-behavior: auto;
   }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Anchor offset to account for sticky navbar */
@@ -45,4 +53,10 @@ div[id] {
   div[id] {
     scroll-margin-top: 6rem; /* desktop */
   }
+}
+
+/* Visible focus states for keyboard users */
+:focus-visible {
+  outline: 2px solid oklch(var(--p));
+  outline-offset: 2px;
 }
