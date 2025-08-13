@@ -92,7 +92,13 @@ export default function SkillsMatrix() {
                                 sizes="18px"
                                 unoptimized
                               />
-                            ) : null;
+                            ) : (
+                              <span
+                                aria-hidden
+                                className="bg-accent inline-block h-[14px] w-[14px] rounded-full"
+                                title={item.name}
+                              />
+                            );
                           })()}
                           <span className="whitespace-nowrap">{item.name}</span>
                         </span>
