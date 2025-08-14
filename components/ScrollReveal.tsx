@@ -7,7 +7,7 @@ type ScrollRevealProps = PropsWithChildren<{
   className?: string;
   offset?: number;
   delay?: number;
-  amount?: number;
+  amount?: number | "some" | "all";
 }>;
 
 export default function ScrollReveal({
@@ -15,7 +15,7 @@ export default function ScrollReveal({
   className,
   offset = 150,
   delay = 0.5,
-  amount = 0.2,
+  amount = "some",
 }: ScrollRevealProps) {
   const shouldReduceMotion = useReducedMotion();
   const controls = useAnimation();

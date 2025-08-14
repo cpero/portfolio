@@ -4,7 +4,7 @@ import ResumeDownload from "@/components/contact/ResumeDownload";
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="w-full scroll-mt-24 lg:scroll-mt-28">
+    <section id="contact" className="mb-12 w-full scroll-mt-24 lg:scroll-mt-28">
       <div className="mx-auto max-w-6xl p-8">
         <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Contact</h2>
         <p className="text-base-content/80 mt-4 text-lg">

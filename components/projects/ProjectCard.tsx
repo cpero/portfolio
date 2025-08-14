@@ -94,10 +94,10 @@ export default function ProjectCard({ project, className }: Props) {
               href={project.link.url}
               target={/^https?:\/[\/]/.test(project.link.url) ? "_blank" : undefined}
               rel={/^https?:\/[\/]/.test(project.link.url) ? "noopener noreferrer" : undefined}
-              className="btn btn-sm gap-2"
+              className="btn btn-sm bg-primary gap-sec"
             >
               <Image src="/logos/github_logo.png" alt="Github Logo" width={16} height={16} />
-              <span>view it here</span>
+              <span className="text-primary-content">view it here</span>
             </Link>
           </div>
         )}
