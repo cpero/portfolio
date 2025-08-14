@@ -21,6 +21,7 @@
     "prebuild": "vitest --run -t=content | cat"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.23.12",
     "next": "15.4.6",
     "react": "19.1.0",
