@@ -29,13 +29,76 @@ export async function POST(request: Request) {
     const now = Date.now();
     console.log("analytics:event", { ...event, receivedAt: now });
 
+    // Forward to Google Analytics 4 via Measurement Protocol if configured
+    const measurementId = process.env.GA4_MEASUREMENT_ID;
+    const apiSecret = process.env.GA4_API_SECRET;
+    if (measurementId && apiSecret) {
+      try {
+        const headers = new Headers(request.headers);
+        const forwardedProto = headers.get("x-forwarded-proto") || "https";
+        const host = headers.get("host") || "";
+        const ip = headers.get("x-forwarded-for") || undefined;
+        const userAgent = headers.get("user-agent") || undefined;
+
+        // Use provided timestamp or now; GA expects micros as a string. Avoid BigInt for wider TS targets.
+        const tsMs = (event as { timestamp?: number }).timestamp ?? now;
+        const timestampMicros = String(tsMs * 1000);
+
+        // Build GA4 event name + params mapping
+        const pageLocationBase = host ? `${forwardedProto}://${host}` : "";
+        const toGaEvent = () => {
+          if (event.type === "visit") {
+            return {
+              name: "page_view",
+              params: {
+                page_location: `${pageLocationBase}${event.path ?? "/"}`,
+                page_referrer: event.ref ?? undefined,
+              },
+            };
+          }
+          if (event.type === "resume_download") {
+            return {
+              name: "resume_download",
+              params: {
+                source: event.source,
+                page_location: `${pageLocationBase}`,
+              },
+            };
+          }
+          // Fallback (should not happen due to schema)
+          return { name: "custom_event", params: {} };
+        };
+
+        const clientId = (globalThis.crypto?.randomUUID?.() ?? `${now}.${Math.random()}`) as string;
+
+        const body = {
+          client_id: clientId,
+          timestamp_micros: timestampMicros,
+          non_personalized_ads: true,
+          events: [toGaEvent()],
+        } as const;
+
+        const endpoint = `https://www.google-analytics.com/mp/collect?measurement_id=${encodeURIComponent(
+          measurementId,
+        )}&api_secret=${encodeURIComponent(apiSecret)}`;
+
+        // Forward UA and client IP for better attribution
+        const gaHeaders = new Headers({ "Content-Type": "application/json" });
+        if (userAgent) gaHeaders.set("User-Agent", userAgent);
+        if (ip) gaHeaders.set("X-Forwarded-For", ip);
+
+        await fetch(endpoint, {
+          method: "POST",
+          headers: gaHeaders,
+          body: JSON.stringify(body),
+        });
+      } catch (gaError) {
+        console.warn("analytics:ga4_forward_failed", gaError);
+      }
+    }
+
     return new NextResponse(null, { status: 204 });
   } catch (error) {
-    return NextResponse.json(
-      { error: "Invalid analytics payload" },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "Invalid analytics payload" }, { status: 400 });
   }
 }
-
-

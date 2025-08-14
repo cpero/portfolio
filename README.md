@@ -24,26 +24,36 @@ pnpm build && pnpm start
 ## Analytics
 
 - Client sends lightweight events to `/api/analytics` with `navigator.sendBeacon` fallback to `fetch`.
-- Current event: `resume_download`.
-- Extend `app/api/analytics/route.ts` to process/store events (e.g., log, database, third-party).
+- Current events: `visit` (page views), `resume_download`.
+- The API route forwards events to GA4 via Measurement Protocol when configured.
 
-### Google Analytics (optional)
+### Optional: Google Analytics 4 (server-side forwarding)
 
-This project can inject Google Analytics 4 (GA4) only when configured and only in production builds.
+Set up GA4 without adding any client script by using Measurement Protocol:
 
-1) Create a GA4 property in Google Analytics and copy the Measurement ID. It looks like `G-XXXXXXXXXX`.
+1. Create a GA4 property
 
-2) Add the following environment variable:
+- Go to `https://analytics.google.com` and sign in.
+- Admin → Create → Property → add a Web data stream (your domain).
+
+2. Find your Measurement ID
+
+- Admin → Data streams → select your Web stream → copy the Measurement ID (`G-XXXXXXXXXX`).
+
+3. Create an API secret
+
+- In the Web stream details, find "Measurement Protocol API secrets" → Create → copy the secret.
+
+4. Add environment variables
+
+- Create `.env.local` (not committed) with:
 
 ```
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+GA4_MEASUREMENT_ID=G-XXXXXXXXXX
+GA4_API_SECRET=your_api_secret_here
 ```
 
-3) Make sure you set it in your production environment (e.g., Vercel Project Settings → Environment Variables). Locally, you can add it to a `.env.local` file.
-
-Behavior:
-- If `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set and `NODE_ENV` is `production`, the GA tag is injected automatically.
-- In development (or if the variable is missing), GA is not loaded.
+With these set, `/api/analytics` will forward `visit` and `resume_download` to GA4.
 
 ## Removed Storybook
 
