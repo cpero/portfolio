@@ -96,12 +96,7 @@ export default function ProjectCard({ project, className }: Props) {
               rel={/^https?:\/[\/]/.test(project.link.url) ? "noopener noreferrer" : undefined}
               className="btn btn-sm gap-2"
             >
-              <Image
-                src="https://skillicons.dev/icons?i=github"
-                alt="Github Logo"
-                width={16}
-                height={16}
-              />
+              <Image src="/logos/github_logo.png" alt="Github Logo" width={16} height={16} />
               <span>view it here</span>
             </Link>
           </div>
