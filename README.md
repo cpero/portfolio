@@ -1,60 +1,41 @@
-## Overview
+## Cody Pero — Portfolio (Next.js + Tailwind + DaisyUI)
 
-Static-first Next.js (App Router) portfolio deployed on Vercel. Pages are statically generated where possible for performance; API routes are used for simple analytics events.
+Static-first portfolio built with the Next.js App Router, Tailwind CSS v4, and DaisyUI. Most content is statically generated for performance; an API route handles lightweight analytics. Deployed on Vercel.
 
-## Getting Started
+- Live site: `https://codypero.com`
+- Tech: Next.js 15, React 19, TypeScript 5, Tailwind CSS 4, DaisyUI 5, Framer Motion 12, Vitest 3, Zod 4
 
-Run the dev server:
+### Features
 
-```bash
-pnpm dev
-```
+- One-page layout: Hero, About, Skills, Experience, Projects, Contact
+- Sticky navbar, anchor navigation, smooth scroll, and a skip-to-content link
+- DaisyUI theme toggle with instant theme switching (system preference by default; no localStorage)
+- Content-driven UI from JSON files validated via Zod at build time
+- Projects grid with tags/stack and resume download CTA
+- Accessibility and performance-minded defaults (reduced motion honored, no CLS on LCP image)
+- SEO basics: metadata, `sitemap.xml`, `robots.txt`
+- Lightweight analytics via API route; optional GA4 Measurement Protocol forwarding
 
-## Build
+## Theming
 
-```bash
-pnpm build && pnpm start
-```
+- Themes: `cupcake`, `cyberpunk`, `retro`, `dracula`, `night`
+- Default to system preference before first paint to prevent theme flash.
+- No persistence/localStorage is used by design, to avoid first paint flashing.
 
 ## Deployment (Vercel)
 
-- Connect the repo to Vercel, set framework to Next.js, and deploy. No special configuration is needed.
-- API routes are enabled (we do not use static export).
+- Connect the repo to Vercel (Framework: Next.js). Deploy to your custom domain (e.g., `codypero.com`).
+- Images use `images.unoptimized: true` with explicit dimensions.
+- API routes are enabled for analytics; the rest of the site prerenders statically.
 
-## Analytics
+## Project Structure
 
-- Client sends lightweight events to `/api/analytics` with `navigator.sendBeacon` fallback to `fetch`.
-- Current events: `visit` (page views), `resume_download`.
-- The API route forwards events to GA4 via Measurement Protocol when configured.
+- `app/`: App Router pages (`layout.tsx`, `page.tsx`, API routes, SEO files)
+- `components/`: UI components (Navbar, ThemeToggle, sections, etc.)
+- `lib/`: Utilities (`analytics`, `content`, `schemas`, `theme`)
+- `content/`: JSON content files
+- `tests/`: Vitest tests (jsdom)
 
-### Optional: Google Analytics 4 (server-side forwarding)
+## License
 
-Set up GA4 without adding any client script by using Measurement Protocol:
-
-1. Create a GA4 property
-
-- Go to `https://analytics.google.com` and sign in.
-- Admin → Create → Property → add a Web data stream (your domain).
-
-2. Find your Measurement ID
-
-- Admin → Data streams → select your Web stream → copy the Measurement ID (`G-XXXXXXXXXX`).
-
-3. Create an API secret
-
-- In the Web stream details, find "Measurement Protocol API secrets" → Create → copy the secret.
-
-4. Add environment variables
-
-- Create `.env.local` (not committed) with:
-
-```
-GA4_MEASUREMENT_ID=G-XXXXXXXXXX
-GA4_API_SECRET=your_api_secret_here
-```
-
-With these set, `/api/analytics` will forward `visit` and `resume_download` to GA4.
-
-## Removed Storybook
-
-- Storybook has been removed from scripts and dependencies.
+MIT

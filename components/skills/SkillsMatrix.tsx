@@ -45,8 +45,6 @@ function getSkillIconSlug(name: string): string | undefined {
   return map[normalized];
 }
 
-// Note: previous grid-based spanning removed; keep function deleted
-
 export default function SkillsMatrix() {
   const categories = [
     { key: "languages", label: "Languages", items: skills.categories.languages },

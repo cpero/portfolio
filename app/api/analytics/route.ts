@@ -25,7 +25,6 @@ export async function POST(request: Request) {
     const json = await request.json();
     const event = AnalyticsEventSchema.parse(json);
 
-    // Basic processing placeholder; replace with durable storage/logging as needed
     const now = Date.now();
     console.log("analytics:event", { ...event, receivedAt: now });
 
@@ -40,11 +39,9 @@ export async function POST(request: Request) {
         const ip = headers.get("x-forwarded-for") || undefined;
         const userAgent = headers.get("user-agent") || undefined;
 
-        // Use provided timestamp or now; GA expects micros as a string. Avoid BigInt for wider TS targets.
         const tsMs = (event as { timestamp?: number }).timestamp ?? now;
         const timestampMicros = String(tsMs * 1000);
 
-        // Build GA4 event name + params mapping
         const pageLocationBase = host ? `${forwardedProto}://${host}` : "";
         const toGaEvent = () => {
           if (event.type === "visit") {
@@ -65,7 +62,6 @@ export async function POST(request: Request) {
               },
             };
           }
-          // Fallback (should not happen due to schema)
           return { name: "custom_event", params: {} };
         };
 
@@ -82,7 +78,6 @@ export async function POST(request: Request) {
           measurementId,
         )}&api_secret=${encodeURIComponent(apiSecret)}`;
 
-        // Forward UA and client IP for better attribution
         const gaHeaders = new Headers({ "Content-Type": "application/json" });
         if (userAgent) gaHeaders.set("User-Agent", userAgent);
         if (ip) gaHeaders.set("X-Forwarded-For", ip);
@@ -98,7 +93,7 @@ export async function POST(request: Request) {
     }
 
     return new NextResponse(null, { status: 204 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Invalid analytics payload" }, { status: 400 });
   }
 }

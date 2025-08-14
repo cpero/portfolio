@@ -8,7 +8,6 @@ describe("anchors and sections", () => {
     const { container } = render(React.createElement(Home));
     const main = container.querySelector("main#content");
     expect(main).toBeTruthy();
-    // Ensure our ScrollReveal wrappers exist via data attribute or ids
     const sectionIds = ["about", "skills", "experience", "projects", "contact"];
     for (const id of sectionIds) {
       const anchorTarget = container.querySelector(`#${id}`);

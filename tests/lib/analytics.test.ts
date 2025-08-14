@@ -7,7 +7,6 @@ describe("analytics", () => {
   const originalFetch = globalThis.fetch;
 
   beforeEach(() => {
-    // Ensure clean spies each test
     vi.restoreAllMocks();
   });
 

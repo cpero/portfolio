@@ -1,7 +1,15 @@
 {
-  "name": "next-init-tmp",
-  "version": "0.1.0",
+  "name": "cody-pero-portfolio",
+  "version": "1.0.0",
   "private": true,
+  "description": "Cody Pero's portfolio website built with Next.js, Tailwind CSS, and DaisyUI.",
+  "license": "MIT",
+  "author": "Cody Pero",
+  "homepage": "https://codypero.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<your-username>/portfolio.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

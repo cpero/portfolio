@@ -5,7 +5,6 @@ export type ResumeEventSource = "hero" | "resume-section" | "other";
 function postAnalyticsEvent(payload: unknown): void {
   try {
     if (process.env.NODE_ENV !== "production") {
-      // eslint-disable-next-line no-console
       console.debug("analytics:event", payload);
       return;
     }

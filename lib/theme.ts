@@ -1,12 +1,11 @@
-export const THEME_STORAGE_KEY = "theme" as const;
-
 export const DAISYUI_THEMES = ["cupcake", "cyberpunk", "retro", "dracula", "night"] as const;
 
 export type ThemeName = (typeof DAISYUI_THEMES)[number];
 
 /**
- * Returns an inline script that applies the saved theme (or system preference)
- * before first paint to prevent a theme flash.
+ * Returns an inline script that applies the system-preferred theme before first paint
+ * to prevent a theme flash. No persistence/localStorage is used because it caused the
+ * first paint to flash.
  */
 export function generateNoFlashThemeScript(): string {
   // Inline, self-executing function kept extremely small to run ASAP
