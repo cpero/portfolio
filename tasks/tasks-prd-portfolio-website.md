@@ -60,20 +60,20 @@
 
 ## Tasks
 
-- [ ] 1.0 Project setup and configuration
-  - [x] 1.1 Initialize Next.js App Router project with TypeScript and pnpm; ensure Node 20 via `.nvmrc`.
-  - [x] 1.2 Install and configure Tailwind CSS and DaisyUI; configure Tailwind v4 `@plugin "daisyui"` in `app/globals.css` and set default theme to `cupcake`.
-  - [x] 1.3 Add Geist via `next/font/local` in `app/fonts.ts`; place font files under `public/fonts/` with CLS-safe usage.
-  - [x] 1.4 Configure ESLint: `eslint-config-next`, `eslint-plugin-tailwindcss`, `eslint-plugin-jsx-a11y`; use `eslint.config.mjs` (flat config) and add `.eslintignore`.
-  - [x] 1.5 Configure Prettier with `prettier-plugin-tailwindcss`; add `.prettierrc.json` and `.prettierignore`.
-  - [x] 1.6 Add Framer Motion, Zod, Testing Library, Vitest to `package.json`.
-  - [x] 1.7 Scaffold directories: `app/`, `components/`, `lib/`, `content/`, `public/`, `tests/`.
-  - [x] 1.8 Add npm scripts: `dev`, `build`, `start`, `type-check`, `lint`, `format`, `test`.
+- [x] 1.0 Project setup and configuration
+- [x] 1.1 Initialize Next.js App Router project with TypeScript and pnpm; ensure Node 20 via `.nvmrc`.
+- [x] 1.2 Install and configure Tailwind CSS and DaisyUI; configure Tailwind v4 `@plugin "daisyui"` in `app/globals.css` and set default theme to `cupcake`.
+- [x] 1.3 Add Geist via `next/font/local` in `app/fonts.ts`; place font files under `public/fonts/` with CLS-safe usage.
+- [x] 1.4 Configure ESLint: `eslint-config-next`, `eslint-plugin-tailwindcss`, `eslint-plugin-jsx-a11y`; use `eslint.config.mjs` (flat config) and add `.eslintignore`.
+- [x] 1.5 Configure Prettier with `prettier-plugin-tailwindcss`; add `.prettierrc.json` and `.prettierignore`.
+- [x] 1.6 Add Framer Motion, Zod, Testing Library, Vitest to `package.json`.
+- [x] 1.7 Scaffold directories: `app/`, `components/`, `lib/`, `content/`, `public/`, `tests/`.
+- [x] 1.8 Add npm scripts: `dev`, `build`, `start`, `type-check`, `lint`, `format`, `test`.
 
-- [ ] 2.0 Deployment baseline
-  - [x] 2.1 Configure `next.config.ts` with server output (API routes enabled) and `images: { unoptimized: true }` for Vercel.
-  - [x] 2.2 Remove GitHub Pages deployment workflow and CNAME; set up Vercel project with `codypero.com`.
-    - Note: GitHub Pages workflow removed and CNAME deleted. To finish domain setup, connect repo on Vercel and add `codypero.com` in Domains.
+- [x] 2.0 Deployment baseline
+- [x] 2.1 Configure `next.config.ts` with server output (API routes enabled) and `images: { unoptimized: true }` for Vercel.
+- [x] 2.2 Remove GitHub Pages deployment workflow and CNAME; set up Vercel project with `codypero.com`.
+  - Note: GitHub Pages workflow removed and CNAME deleted. To finish domain setup, connect repo on Vercel and add `codypero.com` in Domains.
 
 - [x] 3.0 Content model and validation
 - [x] 3.1 Implement Zod schemas in `lib/schemas.ts` for `bio`, `experience`, `education`, `skills`, `projects`, `contact`, `interests` per PRD.
@@ -106,20 +106,20 @@
   - [x] 7.2 Ensure links use `rel="noopener noreferrer"` and accessible labels.
   - [x] 7.3 Omit Resend/serverless integration for static export.
 
-- [ ] 8.0 Accessibility, performance, and images
-  - [x] 8.1 Ensure WCAG AA contrast, visible focus states, keyboard navigation, skip-to-content.
-  - [x] 8.2 Honor `prefers-reduced-motion` globally for CSS and Framer Motion variants.
-  - [x] 8.3 Use `next/image` with explicit `width`/`height` and appropriate `sizes`; mark LCP image with `priority`.
-  - [x] 8.4 Lazy-load non-critical images/sections and defer non-critical scripts.
-  - [x] 8.5 Verify budgets: total JS ≤ 200KB gz, fonts ≤ 100KB woff2, LCP ≤ 120KB, CLS < 0.05.
+- [x] 8.0 Accessibility, performance, and images
+- [x] 8.1 Ensure WCAG AA contrast, visible focus states, keyboard navigation, skip-to-content.
+- [x] 8.2 Honor `prefers-reduced-motion` globally for CSS and Framer Motion variants.
+- [x] 8.3 Use `next/image` with explicit `width`/`height` and appropriate `sizes`; mark LCP image with `priority`.
+- [x] 8.4 Lazy-load non-critical images/sections and defer non-critical scripts.
+- [x] 8.5 Verify budgets: total JS ≤ 200KB gz, fonts ≤ 100KB woff2, LCP ≤ 120KB, CLS < 0.05.
 
-- [ ] 9.0 SEO and analytics
-  - [x] 9.1 Define `metadata` in `app/layout.tsx` with title, description, and canonical policy using `codypero.com`.
-  - [x] 9.2 Implement `app/sitemap.ts` and `app/robots.ts`.
-  - [x] 9.3 Implement API-based analytics endpoint at `app/api/analytics/route.ts`; client sends events via `lib/analytics.ts`.
+- [x] 9.0 SEO and analytics
+- [x] 9.1 Define `metadata` in `app/layout.tsx` with title, description, and canonical policy using `codypero.com`.
+- [x] 9.2 Implement `app/sitemap.ts` and `app/robots.ts`.
+- [x] 9.3 Implement API-based analytics endpoint at `app/api/analytics/route.ts`; client sends events via `lib/analytics.ts`.
 
-- [ ] 10.0 Testing and CI/CD
-  - [x] 10.1 Configure Vitest (`vitest.config.ts`) with `jsdom` and Testing Library; create baseline tests under `tests/` as per PRD.
-  - [x] 10.2 Remove Storybook completely (dependencies, scripts, configs).
-  - [x] 10.3 Add CI workflow for type-check, lint, tests. Vercel handles deployments.
-  - [x] 10.4 Update `README.md` with setup, analytics, and Vercel deployment instructions.
+- [x] 10.0 Testing and CI/CD
+- [x] 10.1 Configure Vitest (`vitest.config.ts`) with `jsdom` and Testing Library; create baseline tests under `tests/` as per PRD.
+- [x] 10.2 Remove Storybook completely (dependencies, scripts, configs).
+- [x] 10.3 Add CI workflow for type-check, lint, tests. Vercel handles deployments.
+- [x] 10.4 Update `README.md` with setup, analytics, and Vercel deployment instructions.

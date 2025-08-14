@@ -37,7 +37,6 @@ function getSkillIconSlug(name: string): string | undefined {
     docker: "docker",
     jest: "jest",
     vitest: "vitest",
-    playwright: "playwright",
     tailwind: "tailwind",
     tailwindcss: "tailwind",
     bootstrap: "bootstrap",

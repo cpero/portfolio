@@ -13,19 +13,19 @@ export default function Home() {
   return (
     <main id="content" className="flex min-h-screen flex-col items-center">
       <LandingSection />
-      <ScrollReveal targetId="about">
+      <ScrollReveal>
         <AboutSection />
       </ScrollReveal>
-      <ScrollReveal targetId="skills">
+      <ScrollReveal>
         <SkillsSection />
       </ScrollReveal>
-      <ScrollReveal targetId="experience">
+      <ScrollReveal>
         <ExperienceSection />
       </ScrollReveal>
-      <ScrollReveal targetId="projects">
+      <ScrollReveal>
         <ProjectsSection />
       </ScrollReveal>
-      <ScrollReveal targetId="contact">
+      <ScrollReveal>
         <ContactSection />
       </ScrollReveal>
     </main>
