@@ -4,6 +4,12 @@ export type ResumeEventSource = "hero" | "resume-section" | "other";
 
 function postAnalyticsEvent(payload: unknown): void {
   try {
+    if (process.env.NODE_ENV !== "production") {
+      // eslint-disable-next-line no-console
+      console.debug("analytics:event", payload);
+      return;
+    }
+
     const url = "/api/analytics";
 
     // Prefer sendBeacon for reliability during page unloads
@@ -29,10 +35,6 @@ function postAnalyticsEvent(payload: unknown): void {
 
 export function trackResumeDownload(source: ResumeEventSource = "other"): void {
   postAnalyticsEvent({ type: "resume_download", source, timestamp: Date.now() });
-  if (process.env.NODE_ENV !== "production") {
-    // eslint-disable-next-line no-console
-    console.debug("analytics:event", "resume_download", { source });
-  }
 }
 
 export function trackVisit(): void {
@@ -40,10 +42,6 @@ export function trackVisit(): void {
     const path = typeof window !== "undefined" ? window.location.pathname : "/";
     const ref = typeof document !== "undefined" ? document.referrer : "";
     postAnalyticsEvent({ type: "visit", path, ref, timestamp: Date.now() });
-    if (process.env.NODE_ENV !== "production") {
-      // eslint-disable-next-line no-console
-      console.debug("analytics:event", "visit", { path, ref });
-    }
   } catch {
     // no-op
   }
