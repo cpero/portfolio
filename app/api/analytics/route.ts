@@ -97,3 +97,66 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid analytics payload" }, { status: 400 });
   }
 }
+
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const debug = url.searchParams.get("debug");
+
+  const measurementId = process.env.GA4_MEASUREMENT_ID;
+  const apiSecret = process.env.GA4_API_SECRET;
+
+  const result: Record<string, unknown> = {
+    hasMeasurementId: Boolean(measurementId),
+    hasApiSecret: Boolean(apiSecret),
+    runtime,
+  };
+
+  if (debug === "1" && measurementId && apiSecret) {
+    try {
+      const headers = new Headers(request.headers);
+      const forwardedProto = headers.get("x-forwarded-proto") || "https";
+      const host = headers.get("host") || "";
+      const pageLocationBase = host ? `${forwardedProto}://${host}` : "";
+
+      const body = {
+        client_id: `diagnostic.${Date.now()}`,
+        non_personalized_ads: true,
+        events: [
+          {
+            name: "page_view",
+            params: {
+              page_location: `${pageLocationBase}/analytics-debug`,
+            },
+          },
+        ],
+      } as const;
+
+      const endpoint = `https://www.google-analytics.com/debug/mp/collect?measurement_id=${encodeURIComponent(
+        measurementId,
+      )}&api_secret=${encodeURIComponent(apiSecret)}`;
+
+      const resp = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      let json: unknown = null;
+      try {
+        json = await resp.json();
+      } catch {
+        // ignore JSON parse errors
+      }
+
+      result.gaDebug = {
+        ok: resp.ok,
+        status: resp.status,
+        validation: json,
+      };
+    } catch (_error) {
+      result.gaDebug = { ok: false, error: "ga_debug_request_failed" };
+    }
+  }
+
+  return NextResponse.json(result);
+}
