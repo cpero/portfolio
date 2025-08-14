@@ -81,7 +81,7 @@ export const ProjectSchema = z.object({
   experienceRef: z.string().optional(),
   tags: z.array(z.string()).optional(),
   stack: z.array(z.string()).optional(),
-  links: z.array(ProjectLinkSchema).optional(),
+  link: ProjectLinkSchema.optional(),
   images: z.array(ProjectImageSchema).optional(),
   dates: z
     .object({

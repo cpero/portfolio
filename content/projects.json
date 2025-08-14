@@ -5,12 +5,9 @@
       "title": "Custom Portfolio",
       "details": "I built this website to showcase my skills and experience. I wanted to create a website that was easy to navigate and had a modern look and feel and sleek animations. I created this website using Next.js, Tailwind CSS, and TypeScript. Its optimized for accessibility and performance, so it should work on any device.",
       "experienceRef": "self",
-      "links": [
-        {
-          "label": "GitHub",
-          "url": "https://github.com/cpero/portfolio"
-        }
-      ],
+      "link": {
+        "url": "https://github.com/cpero/portfolio"
+      },
       "tags": ["portfolio", "website", "custom"],
       "stack": ["Next.js", "Tailwind CSS", "TypeScript"],
       "dates": { "start": "2025-08" }

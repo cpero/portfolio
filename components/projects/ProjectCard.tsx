@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Project, ProjectImage, ProjectLink } from "@/lib/schemas";
+import type { Project, ProjectImage } from "@/lib/schemas";
 
 function formatYearMonth(value: string): string {
   const [year, month] = value.split("-");
@@ -50,22 +50,6 @@ function renderImage(image: ProjectImage) {
   );
 }
 
-function renderLink(link: ProjectLink, index: number) {
-  const label = link.title ?? (link.type ? link.type : "link");
-  const isExternal = /^https?:\/\//.test(link.url);
-  return (
-    <Link
-      key={`${label}-${index}`}
-      href={link.url}
-      className="btn btn-sm"
-      target={isExternal ? "_blank" : undefined}
-      rel={isExternal ? "noopener noreferrer" : undefined}
-    >
-      {label}
-    </Link>
-  );
-}
-
 export default function ProjectCard({ project, className }: Props) {
   const period = formatPeriod(project.dates?.start, project.dates?.end);
   return (
@@ -104,9 +88,22 @@ export default function ProjectCard({ project, className }: Props) {
           </div>
         )}
 
-        {(project.links?.length ?? 0) > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.links?.map((lnk, i) => renderLink(lnk, i))}
+        {project.link?.url && (
+          <div className="mt-4">
+            <Link
+              href={project.link.url}
+              target={/^https?:\/[\/]/.test(project.link.url) ? "_blank" : undefined}
+              rel={/^https?:\/[\/]/.test(project.link.url) ? "noopener noreferrer" : undefined}
+              className="btn btn-sm gap-2"
+            >
+              <Image
+                src="https://skillicons.dev/icons?i=github"
+                alt="Github Logo"
+                width={16}
+                height={16}
+              />
+              <span>view it here</span>
+            </Link>
           </div>
         )}
       </div>
