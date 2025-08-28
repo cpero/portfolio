@@ -2,6 +2,24 @@
 
 Fully static portfolio built with the Next.js App Router, Tailwind CSS v4, and DaisyUI. All content is statically generated for maximum performance and fast client load times. Deployed on Vercel.
 
+### Getting Started
+
+This project uses [pnpm](https://pnpm.io/) as the package manager.
+
+```bash
+# Install dependencies
+pnpm install
+
+# Run development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Run tests
+pnpm test
+```
+
 - Live site: `https://codypero.com`
 - Tech: Next.js 15, React 19, TypeScript 5, Tailwind CSS 4, DaisyUI 5, Framer Motion 12, Vitest 3, Zod 4
 
