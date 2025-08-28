@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export",
   images: {
     remotePatterns: [
       {
@@ -10,7 +11,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Use default server output to enable API routes/SSR on Vercel
+  // Static export configuration for fast client load times
 };
 
 export default nextConfig;

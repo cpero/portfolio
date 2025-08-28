@@ -16,7 +16,7 @@ export default function ContactSection() {
               Email Me
             </Link>
           )}
-          <ResumeDownload source="resume-section" />
+          <ResumeDownload />
           {bio.socialLinks && bio.socialLinks.length > 0 && (
             <div className="flex flex-wrap gap-3">
               {bio.socialLinks.map((link) => (

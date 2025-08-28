@@ -1,6 +1,6 @@
 ## Cody Pero — Portfolio (Next.js + Tailwind + DaisyUI)
 
-Static-first portfolio built with the Next.js App Router, Tailwind CSS v4, and DaisyUI. Most content is statically generated for performance; an API route handles lightweight analytics. Deployed on Vercel.
+Fully static portfolio built with the Next.js App Router, Tailwind CSS v4, and DaisyUI. All content is statically generated for maximum performance and fast client load times. Deployed on Vercel.
 
 - Live site: `https://codypero.com`
 - Tech: Next.js 15, React 19, TypeScript 5, Tailwind CSS 4, DaisyUI 5, Framer Motion 12, Vitest 3, Zod 4
@@ -14,7 +14,7 @@ Static-first portfolio built with the Next.js App Router, Tailwind CSS v4, and D
 - Projects grid with tags/stack and resume download CTA
 - Accessibility and performance-minded defaults (reduced motion honored, no CLS on LCP image)
 - SEO basics: metadata, `sitemap.xml`, `robots.txt`
-- Lightweight analytics via API route; optional GA4 Measurement Protocol forwarding
+- Vercel Analytics for privacy-friendly web analytics
 
 ## Theming
 
@@ -26,13 +26,13 @@ Static-first portfolio built with the Next.js App Router, Tailwind CSS v4, and D
 
 - Connect the repo to Vercel (Framework: Next.js). Deploy to your custom domain (e.g., `codypero.com`).
 - Images use `images.unoptimized: true` with explicit dimensions.
-- API routes are enabled for analytics; the rest of the site prerenders statically.
+- The entire site is statically generated for maximum performance and can be deployed to any static hosting service.
 
 ## Project Structure
 
-- `app/`: App Router pages (`layout.tsx`, `page.tsx`, API routes, SEO files)
+- `app/`: App Router pages (`layout.tsx`, `page.tsx`, SEO files)
 - `components/`: UI components (Navbar, ThemeToggle, sections, etc.)
-- `lib/`: Utilities (`analytics`, `content`, `schemas`, `theme`)
+- `lib/`: Utilities (`content`, `schemas`, `theme`)
 - `content/`: JSON content files
 - `tests/`: Vitest tests (jsdom)
 
