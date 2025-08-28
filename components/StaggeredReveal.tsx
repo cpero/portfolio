@@ -38,7 +38,11 @@ export default function StaggeredReveal({
 }
 
 // Staggered item component for individual children
-export function StaggeredItem({ children, className }: PropsWithChildren<{ className?: string }>) {
+export function StaggeredItem({
+  children,
+  className,
+  as = "div",
+}: PropsWithChildren<{ className?: string; as?: "div" | "li" }>) {
   const itemVariants = {
     hidden: {
       opacity: 0,
@@ -54,9 +58,11 @@ export function StaggeredItem({ children, className }: PropsWithChildren<{ class
     },
   };
 
+  const Component = as === "li" ? motion.li : motion.div;
+
   return (
-    <motion.div className={className} variants={itemVariants}>
+    <Component className={className} variants={itemVariants}>
       {children}
-    </motion.div>
+    </Component>
   );
 }
