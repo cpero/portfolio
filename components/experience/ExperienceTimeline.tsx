@@ -37,52 +37,50 @@ export default function ExperienceTimeline() {
           Experience
         </h2>
 
-        <StaggeredReveal className="mt-6" staggerDelay={0.2}>
-          <ul className="list-none space-y-6">
-            {positions.map((pos) => (
-              <StaggeredItem
-                key={pos.id ?? `${pos.company}-${pos.title}-${pos.period.start}`}
-                as="li"
-                className="border-base-300 relative border-l-2 pl-6"
-              >
-                <div
-                  className="bg-primary absolute top-2 left-[-7px] h-3 w-3 rounded-full"
-                  aria-hidden
-                />
-                <div className="card bg-base-200 shadow-sm transition-shadow duration-300 hover:shadow-md">
-                  <div className="card-body">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="card-title text-base sm:text-lg">
-                        {pos.title} — {pos.company}
-                      </h3>
-                      <time className="text-base-content/70 text-sm">
-                        {formatPeriod(pos.period.start, pos.period.end as string | undefined)}
-                      </time>
-                    </div>
-                    {pos.companyDescription && (
-                      <p className="text-base-content/70 text-sm">{pos.companyDescription}</p>
-                    )}
-                    {pos.highlights && pos.highlights.length > 0 && (
-                      <ul className="mt-3 list-inside list-disc space-y-2 text-sm sm:text-base">
-                        {pos.highlights.map((h, i) => (
-                          <li key={i}>{h}</li>
-                        ))}
-                      </ul>
-                    )}
-                    {pos.stack && pos.stack.length > 0 && (
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {pos.stack.map((tech, index) => (
-                          <span key={`${tech}-${index}`} className="badge badge-outline">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+        <StaggeredReveal className="mt-6 list-none space-y-6" staggerDelay={0.2} as="ul">
+          {positions.map((pos) => (
+            <StaggeredItem
+              key={pos.id ?? `${pos.company}-${pos.title}-${pos.period.start}`}
+              as="li"
+              className="border-base-300 relative border-l-2 pl-6"
+            >
+              <div
+                className="bg-primary absolute top-2 left-[-7px] h-3 w-3 rounded-full"
+                aria-hidden
+              />
+              <div className="card bg-base-200 shadow-sm transition-shadow duration-300 hover:shadow-md">
+                <div className="card-body">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="card-title text-base sm:text-lg">
+                      {pos.title} — {pos.company}
+                    </h3>
+                    <time className="text-base-content/70 text-sm">
+                      {formatPeriod(pos.period.start, pos.period.end as string | undefined)}
+                    </time>
                   </div>
+                  {pos.companyDescription && (
+                    <p className="text-base-content/70 text-sm">{pos.companyDescription}</p>
+                  )}
+                  {pos.highlights && pos.highlights.length > 0 && (
+                    <ul className="mt-3 list-inside list-disc space-y-2 text-sm sm:text-base">
+                      {pos.highlights.map((h, i) => (
+                        <li key={i}>{h}</li>
+                      ))}
+                    </ul>
+                  )}
+                  {pos.stack && pos.stack.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {pos.stack.map((tech, index) => (
+                        <span key={`${tech}-${index}`} className="badge badge-outline">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </StaggeredItem>
-            ))}
-          </ul>
+              </div>
+            </StaggeredItem>
+          ))}
         </StaggeredReveal>
       </div>
     </section>

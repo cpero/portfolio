@@ -6,12 +6,14 @@ import * as motion from "motion/react-client";
 type StaggeredRevealProps = PropsWithChildren<{
   className?: string;
   staggerDelay?: number;
+  as?: "div" | "ul";
 }>;
 
 export default function StaggeredReveal({
   children,
   className,
   staggerDelay = 0.1,
+  as = "div",
 }: StaggeredRevealProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,8 +26,10 @@ export default function StaggeredReveal({
     },
   };
 
+  const Component = as === "ul" ? motion.ul : motion.div;
+
   return (
-    <motion.div
+    <Component
       className={className}
       variants={containerVariants}
       initial="hidden"
@@ -33,7 +37,7 @@ export default function StaggeredReveal({
       viewport={{ once: true, amount: 0.1 }}
     >
       {children}
-    </motion.div>
+    </Component>
   );
 }
 
