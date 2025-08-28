@@ -1,6 +1,16 @@
 import "@testing-library/jest-dom/vitest";
 import { vi } from "vitest";
 
+// React 19 compatibility: act is now in react/test-utils instead of react-dom/test-utils
+// We need to make act available globally for testing-library
+import { act } from "react-dom/test-utils";
+
+// Make act available globally for testing-library
+declare global {
+  var act: (callback: () => void) => void;
+}
+globalThis.act = act;
+
 // Polyfill IntersectionObserver for motion/react/useInView
 class MockIntersectionObserver {
   readonly root: Element | null = null;
