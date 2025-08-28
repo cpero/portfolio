@@ -4,12 +4,29 @@ import headshot from "@/public/headshot.png";
 import { bio } from "@/lib/content";
 import Headshot from "@/components/landing/Headshot";
 import AnimatedSplitText from "@/components/landing/AnimatedSplitText";
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import {
+  AnimatePresence,
+  LayoutGroup,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import * as motion from "motion/react-client";
+import { useEffect, useState, useRef } from "react";
 
 export default function LandingSection() {
   const shouldReduceMotion = useReducedMotion();
   const [introActive, setIntroActive] = useState(!shouldReduceMotion);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Create scroll-linked animations
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.6]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
   useEffect(() => {
     if (shouldReduceMotion) return;
@@ -18,7 +35,11 @@ export default function LandingSection() {
   }, [shouldReduceMotion]);
 
   return (
-    <section id="hero" className="hero bg-base-100 relative h-screen w-full overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="hero"
+      className="hero bg-base-100 relative h-screen w-full overflow-hidden"
+    >
       <LayoutGroup>
         <AnimatePresence>
           {introActive && (
@@ -39,7 +60,10 @@ export default function LandingSection() {
           )}
         </AnimatePresence>
 
-        <div className="hero-content max-w-6xl flex-col-reverse items-center gap-10 p-8 text-center lg:flex-row lg:justify-between lg:text-left">
+        <motion.div
+          className="hero-content max-w-6xl flex-col-reverse items-center gap-10 p-8 text-center lg:flex-row lg:justify-between lg:text-left"
+          style={{ y, opacity, scale }}
+        >
           <div className="max-w-2xl">
             <motion.h1
               layoutId="hero-name"
@@ -69,6 +93,10 @@ export default function LandingSection() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: introActive ? 0 : 1, y: introActive ? 8 : 0 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.2 },
+            }}
           >
             <Headshot
               src={headshot}
@@ -77,7 +105,7 @@ export default function LandingSection() {
               sizes="(min-width: 1024px) 16rem, (min-width: 640px) 14rem, 12rem"
             />
           </motion.div>
-        </div>
+        </motion.div>
       </LayoutGroup>
     </section>
   );

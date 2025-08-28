@@ -15,6 +15,7 @@ Fully static portfolio built with the Next.js App Router, Tailwind CSS v4, and D
 - Accessibility and performance-minded defaults (reduced motion honored, no CLS on LCP image)
 - SEO basics: metadata, `sitemap.xml`, `robots.txt`
 - Vercel Analytics for privacy-friendly web analytics
+- **Enhanced scroll behavior**: Custom hash navigation that properly accounts for scroll-margin-top CSS classes on page reload
 
 ## Theming
 

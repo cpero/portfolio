@@ -1,5 +1,6 @@
 import { projects } from "@/lib/content";
 import ProjectCard from "@/components/projects/ProjectCard";
+import StaggeredReveal, { StaggeredItem } from "@/components/StaggeredReveal";
 
 export default function ProjectsSection() {
   return (
@@ -8,11 +9,17 @@ export default function ProjectsSection() {
         <h2 className="decoration-accent text-2xl font-bold tracking-tight underline underline-offset-4 sm:text-3xl">
           Projects
         </h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <StaggeredReveal
+          className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          staggerDelay={0.15}
+        >
           {projects.projects.slice().map((proj) => (
-            <ProjectCard key={proj.id ?? `${proj.title}`} project={proj} />
+            <StaggeredItem key={proj.id ?? `${proj.title}`}>
+              <ProjectCard project={proj} />
+            </StaggeredItem>
           ))}
-        </div>
+        </StaggeredReveal>
       </div>
     </section>
   );

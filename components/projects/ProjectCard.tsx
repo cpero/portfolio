@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import * as motion from "motion/react-client";
 import type { Project, ProjectImage } from "@/lib/schemas";
 
 function formatYearMonth(value: string): string {
@@ -37,7 +38,11 @@ type Props = {
 
 function renderImage(image: ProjectImage) {
   return (
-    <div className="border-base-300 relative overflow-hidden rounded-lg border">
+    <motion.div
+      className="border-base-300 relative overflow-hidden rounded-lg border"
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.2 }}
+    >
       <Image
         src={image.src}
         alt={image.alt}
@@ -46,14 +51,18 @@ function renderImage(image: ProjectImage) {
         className="h-auto w-full object-cover"
         sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
       />
-    </div>
+    </motion.div>
   );
 }
 
 export default function ProjectCard({ project, className }: Props) {
   const period = formatPeriod(project.dates?.start, project.dates?.end);
   return (
-    <article className={`card bg-base-200 shadow-sm ${className ?? ""}`}>
+    <motion.article
+      className={`card bg-base-200 shadow-sm transition-shadow duration-300 hover:shadow-lg ${className ?? ""}`}
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+    >
       <div className="card-body">
         <div className="flex flex-col flex-wrap items-baseline justify-between gap-2">
           <h3 className="card-title text-base sm:text-lg">{project.title}</h3>
@@ -90,18 +99,20 @@ export default function ProjectCard({ project, className }: Props) {
 
         {project.link?.url && (
           <div className="mt-4">
-            <Link
-              href={project.link.url}
-              target={/^https?:\/[\/]/.test(project.link.url) ? "_blank" : undefined}
-              rel={/^https?:\/[\/]/.test(project.link.url) ? "noopener noreferrer" : undefined}
-              className="btn btn-sm bg-primary gap-sec"
-            >
-              <Image src="/logos/github_logo.png" alt="Github Logo" width={16} height={16} />
-              <span className="text-primary-content">view it here</span>
-            </Link>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href={project.link.url}
+                target={/^https?:\/\//.test(project.link.url) ? "_blank" : undefined}
+                rel={/^https?:\/\//.test(project.link.url) ? "noopener noreferrer" : undefined}
+                className="btn btn-sm bg-primary gap-sec"
+              >
+                <Image src="/logos/github_logo.png" alt="Github Logo" width={16} height={16} />
+                <span className="text-primary-content">view it here</span>
+              </Link>
+            </motion.div>
           </div>
         )}
       </div>
-    </article>
+    </motion.article>
   );
 }

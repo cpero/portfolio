@@ -2,7 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
+  experimental: {
+    optimizeRouterScrolling: true,
+  },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

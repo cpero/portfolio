@@ -1,5 +1,5 @@
 import ThemeToggle from "@/components/ThemeToggle";
-import Link from "next/link";
+import HashLink from "@/components/HashLink";
 
 export default function Navbar() {
   return (
@@ -28,48 +28,48 @@ export default function Navbar() {
           </button>
           <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
             <li>
-              <Link href="#about">About</Link>
+              <HashLink href="#about">About</HashLink>
             </li>
             <li>
-              <Link href="#skills">Skills</Link>
+              <HashLink href="#skills">Skills</HashLink>
             </li>
             <li>
-              <Link href="#experience">Experience</Link>
+              <HashLink href="#experience">Experience</HashLink>
             </li>
             <li>
-              <Link href="#projects">Projects</Link>
+              <HashLink href="#projects">Projects</HashLink>
             </li>
 
             <li>
-              <Link href="#contact">Contact</Link>
+              <HashLink href="#contact">Contact</HashLink>
             </li>
           </ul>
         </div>
-        <Link href="#content" className="btn btn-ghost p-0 text-xl lg:px-4">
+        <HashLink href="#content" className="btn btn-ghost p-0 text-xl lg:px-4">
           Cody Pero
-        </Link>
+        </HashLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link href="#about">About</Link>
+            <HashLink href="#about">About</HashLink>
           </li>
           <li>
-            <Link href="#skills">Skills</Link>
+            <HashLink href="#skills">Skills</HashLink>
           </li>
           <li>
-            <Link href="#experience">Experience</Link>
+            <HashLink href="#experience">Experience</HashLink>
           </li>
           <li>
-            <Link href="#projects">Projects</Link>
+            <HashLink href="#projects">Projects</HashLink>
           </li>
         </ul>
       </div>
       <div className="navbar-end gap-4">
         <ThemeToggle />
-        <Link href="#contact" className="btn btn-secondary">
+        <HashLink href="#contact" className="btn btn-secondary">
           Contact Me
-        </Link>
+        </HashLink>
       </div>
     </nav>
   );

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { skills } from "@/lib/content";
 import type { SkillItem } from "@/lib/schemas";
+import StaggeredReveal, { StaggeredItem } from "@/components/StaggeredReveal";
 
 function getBadgeClass(prof?: SkillItem["proficiency"]): string {
   switch (prof) {
@@ -63,49 +64,56 @@ export default function SkillsMatrix() {
         <h2 className="decoration-accent text-2xl font-bold tracking-tight underline underline-offset-4 sm:text-3xl">
           Skills
         </h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <StaggeredReveal
+          className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          staggerDelay={0.15}
+        >
           {categories
             .filter((c) => (c.items?.length ?? 0) > 0)
             .map((category) => (
-              <div key={category.key} className="card bg-base-200 shadow-sm">
-                <div className="card-body">
-                  <h3 className="card-title text-base">{category.label}</h3>
-                  <ul className="mt-2 flex flex-wrap gap-3 sm:gap-4">
-                    {category.items?.map((item, index) => (
-                      <li key={`${category.key}-${item.name}-${index}`} className="list-none">
-                        <span
-                          className={`badge ${getBadgeClass(
-                            item.proficiency,
-                          )} inline-flex items-center justify-start gap-2`}
-                        >
-                          {(() => {
-                            const slug = getSkillIconSlug(item.name);
-                            return slug ? (
-                              <Image
-                                src={`https://skillicons.dev/icons?i=${slug}`}
-                                alt={item.name}
-                                width={18}
-                                height={18}
-                                sizes="18px"
-                                unoptimized
-                              />
-                            ) : (
-                              <span
-                                aria-hidden
-                                className="bg-accent inline-block h-[14px] w-[14px] rounded-full"
-                                title={item.name}
-                              />
-                            );
-                          })()}
-                          <span className="whitespace-nowrap">{item.name}</span>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+              <StaggeredItem key={category.key}>
+                <div className="card bg-base-200 shadow-sm transition-shadow duration-300 hover:shadow-md">
+                  <div className="card-body">
+                    <h3 className="card-title text-base">{category.label}</h3>
+                    <ul className="mt-2 flex flex-wrap gap-3 sm:gap-4">
+                      {category.items?.map((item, index) => (
+                        <li key={`${category.key}-${item.name}-${index}`} className="list-none">
+                          <span
+                            className={`badge ${getBadgeClass(
+                              item.proficiency,
+                            )} inline-flex items-center justify-start gap-2`}
+                          >
+                            {(() => {
+                              const slug = getSkillIconSlug(item.name);
+                              return slug ? (
+                                <Image
+                                  src={`https://skillicons.dev/icons?i=${slug}`}
+                                  alt={item.name}
+                                  width={18}
+                                  height={18}
+                                  sizes="18px"
+                                  unoptimized
+                                />
+                              ) : (
+                                <span
+                                  aria-hidden
+                                  className="bg-accent inline-block h-[14px] w-[14px] rounded-full"
+                                  title={item.name}
+                                />
+                              );
+                            })()}
+                            <span className="whitespace-nowrap">{item.name}</span>
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              </StaggeredItem>
             ))}
-        </div>
+        </StaggeredReveal>
+
         {hasProficiency && (
           <div className="text-base-content/70 mt-4 text-sm">
             <span className="font-medium">Legend:</span> beginner = ghost, intermediate = neutral,

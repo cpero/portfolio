@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/vitest";
 import { vi } from "vitest";
 
-// Polyfill IntersectionObserver for framer-motion/useInView
+// Polyfill IntersectionObserver for motion/react/useInView
 class MockIntersectionObserver {
   readonly root: Element | null = null;
   readonly rootMargin: string = "0px";

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import AnalyticsClient from "@/components/AnalyticsClient";
+import HashScrollHandler from "@/components/HashScrollHandler";
+import HashLink from "@/components/HashLink";
 import { generateNoFlashThemeScript } from "@/lib/theme";
 import "./globals.css";
 
@@ -29,21 +30,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
         <script dangerouslySetInnerHTML={{ __html: generateNoFlashThemeScript() }} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-base-100 text-base-content overflow-x-hidden antialiased`}
       >
-        <Link
+        <HashLink
           href="#content"
           className="btn btn-sm btn-primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100]"
         >
           Skip to content
-        </Link>
+        </HashLink>
         <Navbar />
         <AnalyticsClient />
+        <HashScrollHandler />
         {children}
       </body>
     </html>

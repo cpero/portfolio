@@ -18,11 +18,10 @@
         "Cucumber",
         "RSpec",
         "Tailwind CSS",
-        "Playwright",
-        "Tailwind CSS"
+        "Playwright"
       ],
       "highlights": [
-        "Developed and managed React microsites that interact with a Rails monolith. Things like analytics, reporting, and due date management were all built as separate React microsites.",
+        "Developed and managed React microsites that interact with a Rails monolith. Things like analytics, reporting, and due date management were all built as separate projects.",
         "Built admin tools for efficient customer data management. Since all of our content was produced in-house, we had several admin tools to manage the content.",
         "Improved student engagement and accessibility while preserving annotations and analytics. Education was our passion and we wanted to make sure we were doing everything we could to help students succeed."
       ]
