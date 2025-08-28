@@ -89,7 +89,7 @@ export default function SkillsMatrix() {
                               return slug ? (
                                 <Image
                                   src={`https://skillicons.dev/icons?i=${slug}`}
-                                  alt={item.name}
+                                  alt=""
                                   width={18}
                                   height={18}
                                   sizes="18px"
