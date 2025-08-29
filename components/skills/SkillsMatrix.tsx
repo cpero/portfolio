@@ -1,7 +1,41 @@
-import Image from "next/image";
 import { skills } from "@/lib/content";
 import type { SkillItem } from "@/lib/schemas";
 import StaggeredReveal, { StaggeredItem } from "@/components/StaggeredReveal";
+import {
+  Code,
+  Database,
+  GitBranch,
+  Globe,
+  Server,
+  TestTube,
+  FileCode,
+  Palette,
+  Atom,
+  Sparkles,
+  Grid,
+  Layers,
+  ArrowRight,
+  Train,
+  RefreshCw,
+  Network,
+  Leaf,
+  Zap,
+  Shield,
+  Cloud,
+  Package,
+  Hammer,
+  Rocket,
+  Eye,
+  BarChart3,
+  Activity,
+  AlertTriangle,
+  Gem,
+  LucideIcon,
+  Coffee,
+  Braces,
+  Type,
+  Flower,
+} from "lucide-react";
 
 function getBadgeClass(prof?: SkillItem["proficiency"]): string {
   switch (prof) {
@@ -18,42 +52,69 @@ function getBadgeClass(prof?: SkillItem["proficiency"]): string {
   }
 }
 
-function getSkillIconSlug(name: string): string | undefined {
-  const normalized = name.toLowerCase().replace(/[^a-z0-9]/g, "");
-  const map: Record<string, string> = {
-    java: "java",
-    javascript: "js",
-    typescript: "ts",
-    sql: "sqlite",
-    html: "html",
-    css: "css",
-    ruby: "ruby",
-    react: "react",
-    rails: "rails",
-    rubyonrails: "rails",
-    git: "git",
-    vite: "vite",
-    heroku: "heroku",
-    aws: "aws",
-    docker: "docker",
-    jest: "jest",
-    vitest: "vitest",
-    tailwind: "tailwind",
-    tailwindcss: "tailwind",
-    bootstrap: "bootstrap",
-    materialui: "materialui",
+function getSkillIcon(name: string): LucideIcon {
+  const iconMap: Record<string, LucideIcon> = {
+    // Languages - More distinct icons
+    Java: Coffee,
+    JavaScript: Braces,
+    TypeScript: Type,
+    Ruby: Gem,
+    Python: Flower,
+
+    // Frontend
+    HTML: FileCode,
+    CSS: Palette,
+    React: Atom,
+    "Tailwind CSS": Sparkles,
+    Bootstrap: Grid,
+    "Material UI": Layers,
+    "Next.js": ArrowRight,
+
+    // Backend
+    "Ruby on Rails": Zap,
+    SQL: Database,
+    AJAX: RefreshCw,
+    "Node.js": Server,
+    PostgreSQL: Database,
+    GraphQL: Network,
+    "REST APIs": Globe,
+
+    // Testing
+    Cucumber: Leaf,
+    RSpec: TestTube,
+    Jest: Zap,
+    Vitest: Zap,
+    Playwright: TestTube,
+    Cypress: Shield,
+
+    // DevOps
+    Git: GitBranch,
+    Vite: Zap,
+    Heroku: Cloud,
+    AWS: Cloud,
+    Docker: Package,
+    "Apache Maven": Hammer,
+    Vercel: Rocket,
+
+    // Analytics
+    FullStory: Eye,
+    "Google Analytics": BarChart3,
+    "Vercel Analytics": Activity,
+    Sentry: AlertTriangle,
+    "D3.js": BarChart3,
   };
-  return map[normalized];
+
+  return iconMap[name] || Code; // fallback to Code icon
 }
 
 export default function SkillsMatrix() {
   const categories = [
     { key: "languages", label: "Languages", items: skills.categories.languages },
-    { key: "frameworks", label: "Frameworks", items: skills.categories.frameworks },
-    { key: "tooling", label: "Tooling", items: skills.categories.tooling },
-    { key: "cloudDevOps", label: "Cloud & DevOps", items: skills.categories.cloudDevOps },
+    { key: "frontend", label: "Frontend", items: skills.categories.frontend },
+    { key: "backend", label: "Backend", items: skills.categories.backend },
     { key: "testing", label: "Testing", items: skills.categories.testing },
-    { key: "uiLibraries", label: "UI Libraries", items: skills.categories.uiLibraries },
+    { key: "devOps", label: "DevOps", items: skills.categories.devOps },
+    { key: "analytics", label: "Analytics", items: skills.categories.analytics },
   ] as const;
 
   const hasProficiency = categories.some((c) => c.items?.some((i) => i.proficiency) ?? false);
@@ -73,40 +134,25 @@ export default function SkillsMatrix() {
             .filter((c) => (c.items?.length ?? 0) > 0)
             .map((category) => (
               <StaggeredItem key={category.key}>
-                <div className="card bg-base-200 shadow-sm transition-shadow duration-300 hover:shadow-md">
-                  <div className="card-body">
+                <div className="card bg-base-200 h-full shadow-sm transition-shadow duration-300 hover:shadow-md">
+                  <div className="card-body flex flex-col">
                     <h3 className="card-title text-base">{category.label}</h3>
-                    <ul className="mt-2 flex flex-wrap gap-3 sm:gap-4">
-                      {category.items?.map((item, index) => (
-                        <li key={`${category.key}-${item.name}-${index}`} className="list-none">
-                          <span
-                            className={`badge ${getBadgeClass(
-                              item.proficiency,
-                            )} inline-flex items-center justify-start gap-2`}
-                          >
-                            {(() => {
-                              const slug = getSkillIconSlug(item.name);
-                              return slug ? (
-                                <Image
-                                  src={`https://skillicons.dev/icons?i=${slug}`}
-                                  alt=""
-                                  width={18}
-                                  height={18}
-                                  sizes="18px"
-                                  unoptimized
-                                />
-                              ) : (
-                                <span
-                                  aria-hidden
-                                  className="bg-accent inline-block h-[14px] w-[14px] rounded-full"
-                                  title={item.name}
-                                />
-                              );
-                            })()}
-                            <span className="whitespace-nowrap">{item.name}</span>
-                          </span>
-                        </li>
-                      ))}
+                    <ul className="mt-2 flex flex-1 flex-wrap gap-3 sm:gap-4">
+                      {category.items?.map((item, index) => {
+                        const IconComponent = getSkillIcon(item.name);
+                        return (
+                          <li key={`${category.key}-${item.name}-${index}`} className="list-none">
+                            <span
+                              className={`badge ${getBadgeClass(
+                                item.proficiency,
+                              )} inline-flex items-center justify-start gap-2`}
+                            >
+                              <IconComponent size={18} className="flex-shrink-0" />
+                              <span className="whitespace-nowrap">{item.name}</span>
+                            </span>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>

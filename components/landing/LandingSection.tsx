@@ -35,17 +35,13 @@ export default function LandingSection() {
   }, [shouldReduceMotion]);
 
   return (
-    <section
-      ref={sectionRef}
-      id="hero"
-      className="hero bg-base-100 relative h-screen w-full overflow-hidden"
-    >
+    <section ref={sectionRef} id="hero" className="hero relative h-screen w-full overflow-hidden">
       <LayoutGroup>
         <AnimatePresence>
           {introActive && (
             <motion.div
               key="intro"
-              className="bg-base-100 absolute inset-0 z-10 grid place-items-center"
+              className="absolute inset-0 z-10 grid place-items-center"
               initial={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}

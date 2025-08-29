@@ -49,11 +49,11 @@ export const SkillItemSchema = z.object({
 export const SkillsSchema = z.object({
   categories: z.object({
     languages: z.array(SkillItemSchema).optional(),
-    frameworks: z.array(SkillItemSchema).optional(),
-    tooling: z.array(SkillItemSchema).optional(),
-    cloudDevOps: z.array(SkillItemSchema).optional(),
+    frontend: z.array(SkillItemSchema).optional(),
+    backend: z.array(SkillItemSchema).optional(),
     testing: z.array(SkillItemSchema).optional(),
-    uiLibraries: z.array(SkillItemSchema).optional(),
+    devOps: z.array(SkillItemSchema).optional(),
+    analytics: z.array(SkillItemSchema).optional(),
   }),
 });
 

@@ -2,7 +2,7 @@ import HashLink from "@/components/HashLink";
 
 export default function Navbar() {
   return (
-    <nav className="navbar bg-base-100 sticky top-0 z-50 mx-auto shadow-sm">
+    <nav className="navbar bg-base-100/80 border-base-content/10 sticky top-0 z-50 mx-auto border-b shadow-lg backdrop-blur-md">
       <div className="navbar-start">
         <div className="dropdown">
           <button
@@ -25,7 +25,7 @@ export default function Navbar() {
               />
             </svg>
           </button>
-          <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
+          <ul className="menu dropdown-content bg-base-100/90 rounded-box border-base-content/10 z-50 mt-3 w-52 border p-2 text-lg shadow-lg backdrop-blur-md">
             <li>
               <HashLink href="#about">About</HashLink>
             </li>
@@ -49,7 +49,7 @@ export default function Navbar() {
         </HashLink>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 text-lg">
           <li>
             <HashLink href="#about">About</HashLink>
           </li>

@@ -17,7 +17,7 @@
       "title": "Rails Platform Improvements",
       "details": "Implemented changes to model relationships, delivered admin tooling for the Customer Success team, and helped with SOC 2 and accessibility requirements. By interacting with other departments, I was able to understand their workflows and how to improve the application to better support their needs.",
       "experienceRef": "soomo-learning",
-      "tags": ["education", "platform", "a11y", "security"],
+      "tags": ["platform", "a11y", "security"],
       "stack": ["Ruby on Rails", "React"],
       "dates": { "start": "2024-07", "end": "2025-03" }
     },

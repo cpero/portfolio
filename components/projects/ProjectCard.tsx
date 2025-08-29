@@ -59,46 +59,52 @@ export default function ProjectCard({ project, className }: Props) {
   const period = formatPeriod(project.dates?.start, project.dates?.end);
   return (
     <motion.article
-      className={`card bg-base-200 shadow-sm transition-shadow duration-300 hover:shadow-lg ${className ?? ""}`}
+      className={`card bg-base-200 h-full shadow-sm transition-shadow duration-300 hover:shadow-lg ${className ?? ""}`}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
-      <div className="card-body">
-        <div className="flex flex-col flex-wrap items-baseline justify-between gap-2">
+      <div className="card-body flex flex-col">
+        {/* Header Section */}
+        <div className="flex flex-col gap-2">
           <h3 className="card-title text-base sm:text-lg">{project.title}</h3>
           {period && <time className="text-base-content/70 text-sm">{period}</time>}
         </div>
 
+        {/* Image Section */}
         {project.images && project.images.length > 0 && (
-          <div className="mt-2">{renderImage(project.images[0])}</div>
+          <div className="mt-4">{renderImage(project.images[0])}</div>
         )}
 
-        {project.details && (
-          <p className="text-base-content/70 mt-2 text-sm sm:text-base">{project.details}</p>
-        )}
+        {/* Content Section */}
+        <div className="mt-4 flex flex-1 flex-col gap-4">
+          {project.details && (
+            <p className="text-base-content/70 text-sm sm:text-base">{project.details}</p>
+          )}
 
-        {(project.tags?.length ?? 0) > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
-            {project.tags?.map((tag, index) => (
-              <span key={`${tag}-${index}`} className="badge badge-ghost">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+          {(project.tags?.length ?? 0) > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {project.tags?.map((tag, index) => (
+                <span key={`${tag}-${index}`} className="badge badge-ghost">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
 
-        {(project.stack?.length ?? 0) > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
-            {project.stack?.map((tech, index) => (
-              <span key={`${tech}-${index}`} className="badge badge-outline">
-                {tech}
-              </span>
-            ))}
-          </div>
-        )}
+          {(project.stack?.length ?? 0) > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {project.stack?.map((tech, index) => (
+                <span key={`${tech}-${index}`} className="badge badge-outline">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
 
-        {project.link?.url && (
-          <div className="mt-4">
+        {/* Button Section */}
+        <div className="mt-auto pt-4">
+          {project.link?.url ? (
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={project.link.url}
@@ -110,8 +116,10 @@ export default function ProjectCard({ project, className }: Props) {
                 <span className="text-primary-content">view it here</span>
               </Link>
             </motion.div>
-          </div>
-        )}
+          ) : (
+            <div className="h-8" />
+          )}
+        </div>
       </div>
     </motion.article>
   );

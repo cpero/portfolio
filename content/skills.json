@@ -4,21 +4,50 @@
       { "name": "Java" },
       { "name": "JavaScript" },
       { "name": "TypeScript" },
-      { "name": "SQL" },
+      { "name": "Ruby" },
+      { "name": "Python" }
+    ],
+    "frontend": [
       { "name": "HTML" },
       { "name": "CSS" },
-      { "name": "Ruby" }
+      { "name": "React" },
+      { "name": "Tailwind CSS" },
+      { "name": "Bootstrap" },
+      { "name": "Material UI" },
+      { "name": "Next.js" }
     ],
-    "frameworks": [{ "name": "React" }, { "name": "Ruby on Rails" }],
-    "tooling": [{ "name": "Git" }, { "name": "Vite" }, { "name": "AJAX" }, { "name": "FullStory" }],
-    "cloudDevOps": [{ "name": "Heroku" }, { "name": "AWS" }, { "name": "Docker" }],
+    "backend": [
+      { "name": "Ruby on Rails" },
+      { "name": "SQL" },
+      { "name": "AJAX" },
+      { "name": "Node.js" },
+      { "name": "PostgreSQL" },
+      { "name": "GraphQL" },
+      { "name": "REST APIs" }
+    ],
     "testing": [
       { "name": "Cucumber" },
       { "name": "RSpec" },
       { "name": "Jest" },
       { "name": "Vitest" },
-      { "name": "Playwright" }
+      { "name": "Playwright" },
+      { "name": "Cypress" }
     ],
-    "uiLibraries": [{ "name": "Tailwind CSS" }, { "name": "Bootstrap" }, { "name": "Material UI" }]
+    "devOps": [
+      { "name": "Git" },
+      { "name": "Vite" },
+      { "name": "Heroku" },
+      { "name": "AWS" },
+      { "name": "Docker" },
+      { "name": "Apache Maven" },
+      { "name": "Vercel" }
+    ],
+    "analytics": [
+      { "name": "FullStory" },
+      { "name": "Google Analytics" },
+      { "name": "Vercel Analytics" },
+      { "name": "Sentry" },
+      { "name": "D3.js" }
+    ]
   }
 }
