@@ -2,7 +2,7 @@ import HashLink from "@/components/HashLink";
 
 export default function Navbar() {
   return (
-    <nav className="navbar bg-base-100/80 border-base-content/10 sticky top-0 z-50 mx-auto border-b shadow-lg backdrop-blur-md">
+    <nav className="navbar bg-base-200/95 border-base-content/10 sticky top-0 z-50 mx-auto border-b shadow-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <button

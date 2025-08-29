@@ -1,5 +1,4 @@
 import { experience } from "@/lib/content";
-import StaggeredReveal, { StaggeredItem } from "@/components/StaggeredReveal";
 
 function formatYearMonth(value: string): string {
   const [year, month] = value.split("-");
@@ -37,11 +36,10 @@ export default function ExperienceTimeline() {
           Experience
         </h2>
 
-        <StaggeredReveal className="mt-6 list-none space-y-6" staggerDelay={0.2} as="ul">
+        <ul className="mt-6 list-none space-y-6">
           {positions.map((pos) => (
-            <StaggeredItem
+            <li
               key={pos.id ?? `${pos.company}-${pos.title}-${pos.period.start}`}
-              as="li"
               className="border-base-300 relative border-l-2 pl-6"
             >
               <div
@@ -79,9 +77,9 @@ export default function ExperienceTimeline() {
                   )}
                 </div>
               </div>
-            </StaggeredItem>
+            </li>
           ))}
-        </StaggeredReveal>
+        </ul>
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
 import { skills } from "@/lib/content";
 import type { SkillItem } from "@/lib/schemas";
-import StaggeredReveal, { StaggeredItem } from "@/components/StaggeredReveal";
 import {
   Code,
   Database,
@@ -15,7 +14,6 @@ import {
   Grid,
   Layers,
   ArrowRight,
-  Train,
   RefreshCw,
   Network,
   Leaf,
@@ -54,14 +52,11 @@ function getBadgeClass(prof?: SkillItem["proficiency"]): string {
 
 function getSkillIcon(name: string): LucideIcon {
   const iconMap: Record<string, LucideIcon> = {
-    // Languages - More distinct icons
     Java: Coffee,
     JavaScript: Braces,
     TypeScript: Type,
     Ruby: Gem,
     Python: Flower,
-
-    // Frontend
     HTML: FileCode,
     CSS: Palette,
     React: Atom,
@@ -69,8 +64,6 @@ function getSkillIcon(name: string): LucideIcon {
     Bootstrap: Grid,
     "Material UI": Layers,
     "Next.js": ArrowRight,
-
-    // Backend
     "Ruby on Rails": Zap,
     SQL: Database,
     AJAX: RefreshCw,
@@ -78,16 +71,12 @@ function getSkillIcon(name: string): LucideIcon {
     PostgreSQL: Database,
     GraphQL: Network,
     "REST APIs": Globe,
-
-    // Testing
     Cucumber: Leaf,
     RSpec: TestTube,
     Jest: Zap,
     Vitest: Zap,
     Playwright: TestTube,
     Cypress: Shield,
-
-    // DevOps
     Git: GitBranch,
     Vite: Zap,
     Heroku: Cloud,
@@ -95,8 +84,6 @@ function getSkillIcon(name: string): LucideIcon {
     Docker: Package,
     "Apache Maven": Hammer,
     Vercel: Rocket,
-
-    // Analytics
     FullStory: Eye,
     "Google Analytics": BarChart3,
     "Vercel Analytics": Activity,
@@ -104,7 +91,7 @@ function getSkillIcon(name: string): LucideIcon {
     "D3.js": BarChart3,
   };
 
-  return iconMap[name] || Code; // fallback to Code icon
+  return iconMap[name] || Code;
 }
 
 export default function SkillsMatrix() {
@@ -126,14 +113,11 @@ export default function SkillsMatrix() {
           Skills
         </h2>
 
-        <StaggeredReveal
-          className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          staggerDelay={0.15}
-        >
+        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories
             .filter((c) => (c.items?.length ?? 0) > 0)
             .map((category) => (
-              <StaggeredItem key={category.key}>
+              <div key={category.key}>
                 <div className="card bg-base-200 h-full shadow-sm transition-shadow duration-300 hover:shadow-md">
                   <div className="card-body flex flex-col">
                     <h3 className="card-title text-base">{category.label}</h3>
@@ -156,9 +140,9 @@ export default function SkillsMatrix() {
                     </ul>
                   </div>
                 </div>
-              </StaggeredItem>
+              </div>
             ))}
-        </StaggeredReveal>
+        </div>
 
         {hasProficiency && (
           <div className="text-base-content/70 mt-4 text-sm">

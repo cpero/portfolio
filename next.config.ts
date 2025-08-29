@@ -15,7 +15,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Static export configuration for fast client load times
 };
 
 export default nextConfig;

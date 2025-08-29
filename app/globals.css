@@ -3,24 +3,13 @@
   themes: night --default;
 }
 
-/* Remove custom CSS variables; rely on DaisyUI tokens so theme switches reflect immediately */
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-body {
-  font-family:
-    var(--font-geist-sans),
-    system-ui,
-    -apple-system,
-    sans-serif;
-}
-
-/* Smooth scroll with a11y fallback */
 html {
   scroll-behavior: smooth;
-  /* Offset in-page anchor jumps for sticky navbar */
   scroll-padding-top: 6rem;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -37,14 +26,12 @@ html {
   }
 }
 
-/* Anchor offset to account for sticky navbar */
-/* Apply to common section containers and any element with an id */
 main[id],
 section[id],
 header[id],
 footer[id],
 div[id] {
-  scroll-margin-top: 7rem; /* mobile: account for sticky navbar */
+  scroll-margin-top: 7rem;
 }
 @media (min-width: 1024px) {
   html {
@@ -55,11 +42,10 @@ div[id] {
   header[id],
   footer[id],
   div[id] {
-    scroll-margin-top: 8rem; /* desktop */
+    scroll-margin-top: 8rem;
   }
 }
 
-/* Visible focus states for keyboard users */
 :focus-visible {
   outline: 2px solid oklch(var(--p));
   outline-offset: 2px;

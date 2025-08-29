@@ -41,7 +41,6 @@ export default function ScrollLinkedAnimation({
   );
 }
 
-// Parallax component for background elements
 export function ParallaxBackground({
   children,
   className,
@@ -62,7 +61,6 @@ export function ParallaxBackground({
   );
 }
 
-// Fade in/out based on scroll position
 export function ScrollFade({
   children,
   className,

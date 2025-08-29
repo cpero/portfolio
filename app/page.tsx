@@ -11,23 +11,23 @@ export default function Home() {
     <main id="content" className="flex min-h-screen flex-col items-center">
       <LandingSection />
 
-      <ScrollReveal direction="up" duration={1.2} offset={80}>
+      <ScrollReveal direction="left" duration={1.2} offset={80}>
         <AboutSection />
       </ScrollReveal>
 
-      <ScrollReveal direction="left" duration={1.0} offset={60}>
+      <ScrollReveal direction="right" duration={1.0} offset={60}>
         <SkillsSection />
       </ScrollReveal>
 
-      <ScrollReveal direction="right" duration={1.0} offset={60}>
+      <ScrollReveal direction="left" duration={1.0} offset={60}>
         <ExperienceSection />
       </ScrollReveal>
 
-      <ScrollReveal direction="up" duration={1.2} offset={80}>
+      <ScrollReveal direction="right" duration={1.2} offset={80}>
         <ProjectsSection />
       </ScrollReveal>
 
-      <ScrollReveal direction="down" duration={1.0} offset={60}>
+      <ScrollReveal direction="left" duration={1.0} offset={60}>
         <ContactSection />
       </ScrollReveal>
     </main>

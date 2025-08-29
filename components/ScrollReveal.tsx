@@ -36,7 +36,6 @@ export default function ScrollReveal({
     }
   }, [controls, inView, shouldReduceMotion]);
 
-  // Define direction-based variants
   const getDirectionalVariants = () => {
     const directionalVariants = {
       up: {

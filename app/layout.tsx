@@ -35,7 +35,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: generateNoFlashThemeScript() }} />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} from-base-100 via-accent/40 via-primary/30 via-secondary/25 to-accent/50 text-base-content min-h-screen overflow-x-hidden bg-gradient-to-br antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-base-100 text-base-content min-h-screen overflow-x-hidden bg-gradient-to-br antialiased`}
       >
         <HashLink
           href="#content"

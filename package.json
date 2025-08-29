@@ -8,7 +8,7 @@
   "homepage": "https://codypero.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<your-username>/portfolio.git"
+    "url": "git+https://github.com/cpero/portfolio.git"
   },
   "scripts": {
     "dev": "next dev",

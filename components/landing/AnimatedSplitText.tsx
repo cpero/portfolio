@@ -58,7 +58,6 @@ export default function AnimatedSplitText({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.6 }}
-        // Prevent flash of un-animated content before hydration
         style={{ opacity: 0 }}
         aria-hidden="true"
       >

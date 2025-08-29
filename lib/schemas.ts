@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-// Bio
 export const SocialLinkSchema = z.object({
   platform: z.enum(["linkedin", "github", "email"]),
   title: z.string().optional(),
@@ -15,7 +14,6 @@ export const BioSchema = z.object({
   socialLinks: z.array(SocialLinkSchema).optional(),
 });
 
-// Experience
 export const ExperiencePositionSchema = z.object({
   id: z
     .string()
@@ -40,7 +38,6 @@ export const ExperienceSchema = z.object({
   positions: z.array(ExperiencePositionSchema),
 });
 
-// Skills
 export const SkillItemSchema = z.object({
   name: z.string(),
   proficiency: z.enum(["beginner", "intermediate", "advanced", "expert"]).optional(),
@@ -57,7 +54,6 @@ export const SkillsSchema = z.object({
   }),
 });
 
-// Projects
 export const ProjectLinkSchema = z.object({
   type: z.enum(["code", "demo", "docs", "live", "repo", "other"]).optional(),
   title: z.string().optional(),
@@ -101,7 +97,6 @@ export const ProjectsSchema = z.object({
   projects: z.array(ProjectSchema),
 });
 
-// Contact
 export const ContactFormSchema = z.object({
   requiredFields: z.array(z.enum(["name", "email", "message"]).optional()).optional(),
   minMessageLength: z.number().int().min(1).default(1).optional(),
@@ -119,7 +114,6 @@ export type Skills = z.infer<typeof SkillsSchema>;
 export type Projects = z.infer<typeof ProjectsSchema>;
 export type Contact = z.infer<typeof ContactSchema>;
 
-// Inferred types for nested and item-level schemas for UI usage
 export type SocialLink = z.infer<typeof SocialLinkSchema>;
 export type ExperiencePosition = z.infer<typeof ExperiencePositionSchema>;
 export type SkillItem = z.infer<typeof SkillItemSchema>;

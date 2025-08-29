@@ -5,7 +5,6 @@ import projectsJson from "../content/projects.json";
 
 import { BioSchema, ExperienceSchema, SkillsSchema, ProjectsSchema } from "./schemas";
 
-// Validate JSON content at import time so build fails fast on invalid content
 export const bio = BioSchema.parse(bioJson);
 export const experience = ExperienceSchema.parse(experienceJson);
 export const skills = SkillsSchema.parse(skillsJson);

@@ -1,8 +1,5 @@
-// Animation utilities and variants for consistent animations across the portfolio
-
 import type { Variants, Transition } from "motion/react";
 
-// Common easing functions
 export const easings = {
   smooth: [0.22, 1, 0.36, 1] as const,
   bounce: [0.68, -0.55, 0.265, 1.55] as const,
@@ -11,7 +8,6 @@ export const easings = {
   easeIn: [0.55, 0.055, 0.675, 0.19] as const,
 } as const;
 
-// Common transition configurations
 export const transitions = {
   fast: { duration: 0.2, ease: easings.smooth },
   normal: { duration: 0.4, ease: easings.smooth },
@@ -20,7 +16,6 @@ export const transitions = {
   elastic: { duration: 0.8, ease: easings.elastic },
 } as const;
 
-// Fade animations
 export const fadeVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -29,7 +24,6 @@ export const fadeVariants: Variants = {
   },
 };
 
-// Slide animations from different directions
 export const slideVariants = {
   up: {
     hidden: { opacity: 0, y: 50 },
@@ -65,7 +59,6 @@ export const slideVariants = {
   },
 } as const;
 
-// Scale animations
 export const scaleVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: {
@@ -75,7 +68,6 @@ export const scaleVariants: Variants = {
   },
 };
 
-// Stagger container variants
 export const staggerContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -87,7 +79,6 @@ export const staggerContainerVariants: Variants = {
   },
 };
 
-// Stagger item variants
 export const staggerItemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -97,7 +88,6 @@ export const staggerItemVariants: Variants = {
   },
 };
 
-// Hover animations
 export const hoverVariants = {
   lift: {
     scale: 1.05,
@@ -114,7 +104,6 @@ export const hoverVariants = {
   },
 } as const;
 
-// Page transition variants
 export const pageVariants: Variants = {
   initial: {
     opacity: 0,
@@ -138,7 +127,6 @@ export const pageVariants: Variants = {
   },
 };
 
-// Text reveal variants
 export const textRevealVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -151,7 +139,6 @@ export const textRevealVariants: Variants = {
   },
 };
 
-// Card hover variants
 export const cardVariants: Variants = {
   initial: {
     opacity: 0,
@@ -171,7 +158,6 @@ export const cardVariants: Variants = {
   },
 };
 
-// Utility function to create custom variants
 export function createVariants(
   direction: keyof typeof slideVariants = "up",
   customTransition?: Transition,
@@ -185,7 +171,6 @@ export function createVariants(
   };
 }
 
-// Utility function to create stagger variants
 export function createStaggerVariants(
   staggerDelay: number = 0.1,
   itemTransition?: Transition,
