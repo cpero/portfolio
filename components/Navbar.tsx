@@ -1,4 +1,3 @@
-import ThemeToggle from "@/components/ThemeToggle";
 import HashLink from "@/components/HashLink";
 
 export default function Navbar() {
@@ -66,7 +65,6 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        <ThemeToggle />
         <HashLink href="#contact" className="btn btn-secondary">
           Contact Me
         </HashLink>
