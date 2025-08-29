@@ -9,7 +9,7 @@ type ScrollRevealProps = PropsWithChildren<{
   offset?: number;
   delay?: number;
   amount?: number | "some" | "all";
-  direction?: "up" | "down" | "left" | "right";
+  direction?: "left" | "right";
   stagger?: number;
   duration?: number;
 }>;
@@ -20,7 +20,7 @@ export default function ScrollReveal({
   offset = 50,
   delay = 0,
   amount = "some",
-  direction = "up",
+  direction = "left",
   stagger = 0.1,
   duration = 0.8,
 }: ScrollRevealProps) {
@@ -38,32 +38,6 @@ export default function ScrollReveal({
 
   const getDirectionalVariants = () => {
     const directionalVariants = {
-      up: {
-        hidden: { opacity: 0, y: offset },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration,
-            ease: [0.22, 1, 0.36, 1] as const,
-            staggerChildren: stagger,
-            delayChildren: delay,
-          },
-        },
-      },
-      down: {
-        hidden: { opacity: 0, y: -offset },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration,
-            ease: [0.22, 1, 0.36, 1] as const,
-            staggerChildren: stagger,
-            delayChildren: delay,
-          },
-        },
-      },
       left: {
         hidden: { opacity: 0, x: offset },
         visible: {
