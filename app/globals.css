@@ -8,6 +8,19 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Custom gradient using DaisyUI night theme colors - blue to pink */
+body {
+  background: linear-gradient(
+    to bottom right,
+    #0f172a 0%,
+    rgba(59, 130, 246, 0.4) 33%,
+    rgba(147, 51, 234, 0.3) 66%,
+    rgba(236, 72, 153, 0.25) 85%,
+    rgba(236, 72, 153, 0.5) 100%
+  );
+  min-height: 100vh;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
